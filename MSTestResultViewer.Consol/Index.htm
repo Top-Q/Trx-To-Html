@@ -1,0 +1,225 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MS Test Result to HTML</title>
+    <link type="text/css" rel="stylesheet" href="Library/layout.jquery/layout-default-latest.css" />
+    <link type="text/css" rel="Stylesheet" href="Styles/contentpage.css" />
+    <link type="text/css" href="Javascripts/jqueryThemes/cupertino/jquery-ui-1.8.23.custom.css"
+        rel="stylesheet" />
+    <link type="text/css" rel="Stylesheet" href="Styles/default.css" />
+    <!--script library for layout or splitters-->
+    <script type="text/javascript" src="Library/layout.jquery/jquery-latest.js"></script>
+    <script type="text/javascript" src="Library/layout.jquery/jquery-ui-latest.js"></script>
+    <script type="text/javascript" src="Library/layout.jquery/jquery.layout-latest.js"></script>
+    <script language="javascript" type="text/javascript" src="Data/Environment.js"></script>
+    <script type="text/javascript" language="javascript">
+        var outerLayout = null;
+        var innerLayout = null;
+        $(document).ready(function () {
+            $('body').layout({
+                center__paneSelector: ".outer-center",
+                north__paneSelector: ".outer-north",
+                spacing_open: 8, // ALL panes 
+                spacing_closed: 10, // ALL panes 
+                north__closable: false,
+                north__resizable: false,
+                north__spacing_open: 0,
+                maskContents: true // IMPORTANT - enable iframe masking - all panes in this case
+            });
+            outerLayout = $('#layoutBody').layout({
+                spacing_open: 8, // ALL panes 
+                spacing_closed: 10, // ALL panes 
+                west__size: 250,
+                west__minSize: 100,
+                west__maxSize: 400,
+                east__size: 600,
+                east__minSize: 300,
+                east__maxSize: 800,
+                north__closable: false,
+                north__resizable: false,
+                north__spacing_open: 0,
+                west__togglerLength_open: 48,
+                east__togglerLength_open: 0,
+                east__togglerLength_closed: 0,
+                east__initClosed: true,
+                center__onresize: "innerLayout.resizeAll"
+            });
+            innerLayout = $('#layoutBody .ui-layout-center').layout({
+                center__paneSelector: ".inner-center",
+                south__paneSelector: ".inner-south",
+                spacing_open: 8, // ALL panes 
+                spacing_closed: 10,
+                south__size: "25%",
+                south__minSize: 27,
+                south__maxSize: "35%",
+                south__initClosed: true //default minimized
+            });
+
+            $('#dlgInfo').dialog({
+                autoOpen: false,
+                modal: true,
+                width: 700,
+                height: 500,
+                title: "GNU General Public License"
+            });
+            $('#dlgSupport').dialog({
+                autoOpen: false,
+                modal: true,
+                width: 450,
+                height: 250,
+                title: "Support Future Development"
+            });
+
+            $('#aInformation').click(function () {
+                $('#dlgInfo').dialog('open');
+                return false;
+            });
+            $('#aDonate').click(function () {
+                $('#dlgSupport').dialog('open');
+                return false;
+            });
+        });
+
+        function loadHTMLPage(url) {
+            $('#frmCenterContainer').attr('src', url)
+        }
+
+        $(function () {
+            var titles = environment.TestCodebase.split('/');
+            var title = titles[titles.length - 1].replace(/.dll/i, '');
+            $('#reportTitle').text(title + ' Result Report');
+            $('#reportGenerated').text('Generated on ' + environment.Timestamp);
+        });
+    </script>
+</head>
+<body>
+    <div class="outer-north container">
+        <div id="header">
+            <table cellpadding="0" cellspacing="2" width="100%">
+                <tr>
+                    <td style="width: 40px" rowspan="3">
+                        <img alt="Converts VS TestResults files to html with complete information, making easier the inspection of test results"
+                            src="Images/MSTestResultViewer.png" />
+                    </td>
+                    <td>
+                        <div id="reportTitle">
+                        </div>
+                    </td>
+                    <td rowspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="reportGenerated">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="developedBy">
+                            <a href="#">MSTestResultViewer v1.0</a> Copyright © 2012 <a href="http://saffroze.com">
+                                Saffroze Technology</a></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="outer-center container">
+        <div id="layoutBody" class="inner-layout-container">
+            <div class="ui-layout-center container">
+                <div class="inner-center container">
+                    <div id="headers">
+                        <div class="layout-toolbar">
+                            <div style="float: left">
+                                <a class="easyui-linkbutton l-btn l-btn-plain" href="javascript:void(0);" onclick="loadHTMLPage('Table.htm');">
+                                    <span class="l-btn-left"><span class="l-btn-text icon-table">Table</span></span>
+                                </a><a class="easyui-linkbutton l-btn l-btn-plain" href="javascript:void(0);" onclick="loadHTMLPage('Chart.htm');">
+                                    <span class="l-btn-left"><span class="l-btn-text icon-chart">Chart</span></span></a><span
+                                        class="layout-toolbar-separator"></span><a class="easyui-linkbutton l-btn l-btn-plain"
+                                            href="javascript:void(0);" onclick="innerLayout.toggle('south');"><span class="l-btn-left">
+                                                <span class="l-btn-text icon-errorwindow">Error Window</span></span></a>
+                            </div>
+                            <div style="float: right">
+                                <a class="easyui-linkbutton l-btn l-btn-plain" href="javascript:void(0)" onclick="window.print();">
+                                    <span class="l-btn-left"><span class="l-btn-text icon-print">Print</span></span></a><span
+                                        class="layout-toolbar-separator"></span><a id="aInformation" class="easyui-linkbutton l-btn l-btn-plain"
+                                            href="#"><span class="l-btn-left"><span class="l-btn-text icon-information">License</span></span>
+                                        </a><a id="aDonate" class="easyui-linkbutton l-btn l-btn-plain" href="javascript:void(0);">
+                                            <span class="l-btn-left"><span class="l-btn-text icon-donate">Support</span></span></a><span
+                                                class="layout-toolbar-separator"></span><a class="easyui-linkbutton l-btn l-btn-plain"
+                                                    href="javascript:void(0);" onclick="outerLayout.toggle('east');"><span class="l-btn-left"><span
+                                                        class="l-btn-text icon-help"> Help</span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <iframe id="frmCenterContainer" class="ui-layout-content" src="Table.htm" width="100%"
+                        height="100" frameborder="0" scrolling="auto"></iframe>
+                </div>
+                <div class="inner-south container">
+                    <div class="layout-toolbar">
+                        <a class="easyui-linkbutton l-btn l-btn-plain" href="javascript:void(0);" onclick="innerLayout.toggle('south');">
+                            <span class="l-btn-left"><span class="l-btn-text icon-errorwindow">Error Window</span></span>
+                        </a>
+                    </div>
+                    <div class="ui-layout-content">
+                        <table id="tblError" class="FormWrapper" cellpadding="1" cellspacing="1">
+                            <tr class="FormData">
+                                <td class="FormSubHead">
+                                    Error Message
+                                </td>
+                                <td>
+                                    <div id="dvErrorMessage">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="FormData">
+                                <td class="FormSubHead">
+                                    Line Number
+                                </td>
+                                <td>
+                                    <div id="dvLineNumber">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="FormData">
+                                <td class="FormSubHead">
+                                    Stack Trace
+                                </td>
+                                <td>
+                                    <div id="dvStackTrace">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-layout-west container">
+                <div class="layout-toolbar">
+                    <a class="easyui-linkbutton l-btn l-btn-plain" href="javascript:void(0);" onclick="outerLayout.toggle('west');">
+                        <span class="l-btn-left"><span class="l-btn-text icon-testhiearchywindow">Unit Test
+                            Cases</span></span> </a>
+                </div>
+                <iframe class="ui-layout-content" src="TestcaseHierarchy.htm" width="100%" height="100"
+                    frameborder="0" scrolling="auto"></iframe>
+            </div>
+            <div class="ui-layout-east container">
+                <div class="layout-toolbar">
+                    <a class="easyui-linkbutton l-btn l-btn-plain" href="javascript:void(0);" onclick="outerLayout.toggle('east');">
+                        <span class="l-btn-left"><span class="l-btn-text icon-help">Help</span></span></a>
+                </div>
+                <div class="ui-layout-content">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.outer-center -->
+    <div id="dlgInfo">
+        <iframe src="License.htm" frameborder="0" height="450px" width="100%"></iframe>
+    </div>
+    <div id="dlgSupport">
+        <iframe src="Support.htm" frameborder="0" height="200px" width="100%"></iframe>
+    </div>
+</body>
+</html>

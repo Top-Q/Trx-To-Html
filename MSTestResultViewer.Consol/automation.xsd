@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" targetNamespace="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" xmlns:mstns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="Execution">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TestTypeSpecific" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+        <xs:element name="AgentRule" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="name" form="unqualified" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" form="unqualified" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestRun">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TestSettings" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Deployment" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="userDeploymentRoot" form="unqualified" type="xs:string" />
+                  <xs:attribute name="useDefaultDeploymentRoot" form="unqualified" type="xs:string" />
+                  <xs:attribute name="runDeploymentRoot" form="unqualified" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="Execution" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="name" form="unqualified" type="xs:string" />
+            <xs:attribute name="id" form="unqualified" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Times" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="creation" form="unqualified" type="xs:string" />
+            <xs:attribute name="queuing" form="unqualified" type="xs:string" />
+            <xs:attribute name="start" form="unqualified" type="xs:string" />
+            <xs:attribute name="finish" form="unqualified" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ResultSummary" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Counters" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="total" form="unqualified" type="xs:string" />
+                  <xs:attribute name="executed" form="unqualified" type="xs:string" />
+                  <xs:attribute name="passed" form="unqualified" type="xs:string" />
+                  <xs:attribute name="error" form="unqualified" type="xs:string" />
+                  <xs:attribute name="failed" form="unqualified" type="xs:string" />
+                  <xs:attribute name="timeout" form="unqualified" type="xs:string" />
+                  <xs:attribute name="aborted" form="unqualified" type="xs:string" />
+                  <xs:attribute name="inconclusive" form="unqualified" type="xs:string" />
+                  <xs:attribute name="passedButRunAborted" form="unqualified" type="xs:string" />
+                  <xs:attribute name="notRunnable" form="unqualified" type="xs:string" />
+                  <xs:attribute name="notExecuted" form="unqualified" type="xs:string" />
+                  <xs:attribute name="disconnected" form="unqualified" type="xs:string" />
+                  <xs:attribute name="warning" form="unqualified" type="xs:string" />
+                  <xs:attribute name="completed" form="unqualified" type="xs:string" />
+                  <xs:attribute name="inProgress" form="unqualified" type="xs:string" />
+                  <xs:attribute name="pending" form="unqualified" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="RunInfos" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RunInfo" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Text" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                        </xs:sequence>
+                        <xs:attribute name="computerName" form="unqualified" type="xs:string" />
+                        <xs:attribute name="outcome" form="unqualified" type="xs:string" />
+                        <xs:attribute name="timestamp" form="unqualified" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="outcome" form="unqualified" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TestDefinitions" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UnitTest" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TestCategory" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="TestCategoryItem" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:attribute name="TestCategory" form="unqualified" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="Execution" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element name="TestMethod" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="codeBase" form="unqualified" type="xs:string" />
+                        <xs:attribute name="adapterTypeName" form="unqualified" type="xs:string" />
+                        <xs:attribute name="className" form="unqualified" type="xs:string" />
+                        <xs:attribute name="name" form="unqualified" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="name" form="unqualified" type="xs:string" />
+                  <xs:attribute name="storage" form="unqualified" type="xs:string" />
+                  <xs:attribute name="id" form="unqualified" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TestLists" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TestList" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" form="unqualified" type="xs:string" />
+                  <xs:attribute name="id" form="unqualified" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TestEntries" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TestEntry" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="testId" form="unqualified" type="xs:string" />
+                  <xs:attribute name="executionId" form="unqualified" type="xs:string" />
+                  <xs:attribute name="testListId" form="unqualified" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Results" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UnitTestResult" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Output" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="StdOut" type="xs:string" minOccurs="0" />
+                          <xs:element name="ErrorInfo" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Message" type="xs:string" minOccurs="0" />
+                                <xs:element name="StackTrace" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="executionId" form="unqualified" type="xs:string" />
+                  <xs:attribute name="testId" form="unqualified" type="xs:string" />
+                  <xs:attribute name="testName" form="unqualified" type="xs:string" />
+                  <xs:attribute name="computerName" form="unqualified" type="xs:string" />
+                  <xs:attribute name="duration" form="unqualified" type="xs:string" />
+                  <xs:attribute name="startTime" form="unqualified" type="xs:string" />
+                  <xs:attribute name="endTime" form="unqualified" type="xs:string" />
+                  <xs:attribute name="testType" form="unqualified" type="xs:string" />
+                  <xs:attribute name="outcome" form="unqualified" type="xs:string" />
+                  <xs:attribute name="testListId" form="unqualified" type="xs:string" />
+                  <xs:attribute name="relativeResultsDirectory" form="unqualified" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" form="unqualified" type="xs:string" />
+      <xs:attribute name="name" form="unqualified" type="xs:string" />
+      <xs:attribute name="runUser" form="unqualified" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Execution" />
+        <xs:element ref="TestRun" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1 @@
+var testResultStatus = ['Passed', 'Failed', 'Ignored'];var testResultColor = ['#ABD874', '#E18D87', '#F4AD7C'];var projectData = [0, 2, 0];var classDataValue = [[0, 2, 0]];var classDataText = ['CodedUITest1'];var methoDataValue = [372.4309,59.876];var methoDataText = ['Games','TestedFuncs'];var methoDataColor = [testResultColor[1],testResultColor[1]];

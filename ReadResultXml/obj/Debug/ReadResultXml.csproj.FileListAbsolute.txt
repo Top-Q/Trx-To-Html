@@ -1,0 +1,5 @@
+C:\dev\MSTestResultViewer\ReadResultXml\obj\Debug\ReadResultXml.csprojResolveAssemblyReference.cache
+C:\dev\MSTestResultViewer\ReadResultXml\bin\Debug\ReadResultXml.pdb
+C:\dev\MSTestResultViewer\ReadResultXml\obj\Debug\ReadResultXml.pdb
+C:\dev\MSTestResultViewer\ReadResultXml\bin\Debug\ReadResultXml.exe
+C:\dev\MSTestResultViewer\ReadResultXml\obj\Debug\ReadResultXml.exe

@@ -1,0 +1,10 @@
+D:\Imdadhusen\Samples\EasytrxViewer.Consol\EasytrxViewer.Consol\bin\Debug\EasytrxViewer.Consol.exe
+D:\Imdadhusen\Samples\EasytrxViewer.Consol\EasytrxViewer.Consol\bin\Debug\EasytrxViewer.Consol.pdb
+D:\Imdadhusen\Samples\EasytrxViewer.Consol\EasytrxViewer.Consol\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Imdadhusen\Samples\EasytrxViewer.Consol\EasytrxViewer.Consol\obj\x86\Debug\EasytrxViewer.Consol.exe
+D:\Imdadhusen\Samples\EasytrxViewer.Consol\EasytrxViewer.Consol\obj\x86\Debug\EasytrxViewer.Consol.pdb
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\bin\Debug\EasytrxViewer.Consol.exe
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\bin\Debug\EasytrxViewer.Consol.pdb
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\obj\x86\Debug\EasytrxViewer.Consol.exe
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\obj\x86\Debug\EasytrxViewer.Consol.pdb

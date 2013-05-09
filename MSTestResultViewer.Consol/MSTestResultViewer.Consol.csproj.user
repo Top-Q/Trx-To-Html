@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectView>ProjectFiles</ProjectView>
+    <PublishUrlHistory>publish\</PublishUrlHistory>
+    <InstallUrlHistory />
+    <SupportUrlHistory />
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <StartArguments>/T "C:\result\input\automation.trx" /D "C:\result\MSTestResultViewer\HTML"</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <StartArguments>C:\Program Files\Saffroze Technology\MSTest Result Viewer&gt;MSTestResultViewer.Con
+sol.exe /MSTESTEXEPATH "C:\Program Files\Microsoft Visual Studio 10.0\Common7\ID
+E\MSTest.exe" /TESTCONTAINERFOLDERPATH "D:\Imdadhusen\Samples\MSTestProject\MSTe
+stProject\bin\Debug\MSTestProject.dll" /DESTINATIONFOLDERPATH "d:\HTMLReport"</StartArguments>
+  </PropertyGroup>
+</Project>

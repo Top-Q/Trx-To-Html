@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MSTestResultViewer.Consol.ErrorInfo">
+    <Position X="3" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAQAIAAAAAA=</HashCode>
+      <FileName>ErrorInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSTestResultViewer.Consol.Program">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>MgkgEAARJAABAUYAMMGZiBwBHAKIwGIASECBTQIABAU=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSTestResultViewer.Consol.TestClasses">
+    <Position X="3" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAgAACAAAAAAAAAAQAAAAAQAAAABAAAAAAAEA=</HashCode>
+      <FileName>TestClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSTestResultViewer.Consol.TestClassMethods">
+    <Position X="5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAACAQAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TestClassMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSTestResultViewer.Consol.TestResultSummary">
+    <Position X="7" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAgAACAAAAAAgAAAAAAAAAQAAAABAAAAAAAAA=</HashCode>
+      <FileName>TestResultSummary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSTestResultViewer.Consol.TestProjects">
+    <Position X="5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAgAECAAAAAAAAAAQAAAAAQAAAABAAAAAAAAA=</HashCode>
+      <FileName>TestProjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSTestResultViewer.Consol.TestEnvironmentInfo">
+    <Position X="7" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAQAAAAAAAACAAAAIAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>TestEnvironmentInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

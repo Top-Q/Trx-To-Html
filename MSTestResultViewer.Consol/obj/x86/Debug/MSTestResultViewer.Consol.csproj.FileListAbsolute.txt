@@ -1,0 +1,10 @@
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\bin\Debug\EasytrxViewer.Consol.exe
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\bin\Debug\EasytrxViewer.Consol.pdb
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\obj\x86\Debug\EasytrxViewer.Consol.exe
+C:\Documents and Settings\Mohsinali Sunasara\Desktop\EasytrxViewer 21-9-12\EasytrxViewer\EasytrxViewer.Consol\obj\x86\Debug\EasytrxViewer.Consol.pdb
+C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\bin\Debug\MSTestResultViewer.Consol.exe
+C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\bin\Debug\MSTestResultViewer.Consol.pdb
+C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.exe
+C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.pdb
+C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.csprojResolveAssemblyReference.cache

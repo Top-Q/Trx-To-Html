@@ -1,0 +1,1 @@
+"C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe" /testcontainer:"D:\Imdadhusen\Samples\MSTestProject\MSTestProject\bin\Debug\MSTestProject.dll" /resultsfile:"D:\Imdadhusen\Samples\MSTestResultViewer\MSTestResultViewer\MSTestResultViewer.Consol\bin\Debug\Data\MSTestResult.trx"

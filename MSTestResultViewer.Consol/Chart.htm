@@ -1,0 +1,144 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <link type="text/css" rel="Stylesheet" href="Styles/contentpage.css" />
+    <script language="javascript" type="text/javascript" src="Data/Chart.js"></script>
+    <script type="text/javascript" src="RGraph/libraries/RGraph.common.core.js"></script>
+    <script type="text/javascript" src="RGraph/libraries/RGraph.common.effects.js"></script>
+    <script type="text/javascript" src="RGraph/libraries/RGraph.common.key.js"></script>
+    <script type="text/javascript" src="RGraph/libraries/RGraph.common.dynamic.js"></script>
+    <script type="text/javascript" src="RGraph/libraries/RGraph.common.tooltips.js"></script>
+    <script type="text/javascript" src="RGraph/libraries/RGraph.bar.js"></script>
+    <script type="text/javascript" src="RGraph/libraries/RGraph.pie.js"></script>
+    <!--[if lt IE 9]><script src="RGraph/excanvas/excanvas.js"></script><![endif]-->
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript" language="javascript">
+        window.onload = function () {
+            createTestMethosGraph();
+            createTestClassGraph();
+            createTestProjectGraph();
+        }
+        function CreateGradient(obj, color) {
+            return RGraph.RadialGradient(obj, 200, 150, 95, 200, 150, 125, color, 'black')
+        }
+        function createTestProjectGraph() {
+            var pie = new RGraph.Pie('cvsProject', projectData);
+            pie.Set('chart.colors', [CreateGradient(pie, testResultColor[0]), CreateGradient(pie, testResultColor[1]), CreateGradient(pie, testResultColor[2])]);
+            pie.Set('chart.shadow', true);
+            pie.Set('chart.key', testResultStatus);
+            pie.Set('chart.labels', projectData);
+            pie.Set('chart.colors', testResultColor);
+            pie.Set('chart.key.position', 'gutter');
+            pie.Set('chart.shadow.offsetx', 5);
+            pie.Set('chart.shadow.offsety', 5);
+            pie.Set('chart.shadow.blur', 15);
+            pie.Set('chart.shadow.color', '#bbb');
+            pie.Set('chart.key.position.gutter.boxed', true);
+            pie.Set('chart.tooltips', testResultStatus);
+            pie.Set('chart.radius', 90);
+            pie.Set('chart.strokestyle', 'rgba(0,0,0,0.1)');
+            RGraph.Effects.Pie.RoundRobin(pie);
+            pie.Draw();
+        }
+        function createTestClassGraph() {
+            var bar = new RGraph.Bar('cvsClass', classDataValue);
+            bar.Set('chart.text.angle', 90);
+            bar.Set('chart.grouping', 'stacked');
+            bar.Set('chart.labels', classDataText);
+            bar.Set('chart.labels.above', true);
+            bar.Set('chart.labels.above.decimals', 0);
+            bar.Set('chart.linewidth', 0.5);
+            bar.Set('chart.strokestyle', 'white');
+            bar.Set('chart.key', testResultStatus);
+            bar.Set('chart.colors', testResultColor);
+            bar.Set('chart.shadow', false);
+            bar.Set('chart.shadow.offsetx', 1);
+            bar.Set('chart.shadow.offsety', 1);
+            bar.Set('chart.shadow.blue', 5);
+            //bar.Set('chart.hmargin', 25);
+            bar.Set('chart.gutter.left', 45);
+            bar.Set('chart.gutter.bottom', 150);
+            bar.Set('chart.background.grid.vlines', false);
+            bar.Set('chart.background.grid.border', false);
+            bar.Set('chart.axis.color', '#ccc');
+            bar.Set('chart.noyaxis', true);
+            bar.Set('chart.key.position', 'gutter');
+            bar.Set('chart.key.position.x', bar.canvas.width - 300);
+            bar.Set('chart.key.position.y', 20);
+            bar.Set('chart.variant', '3d');
+            bar.ondraw = function (obj) {
+                for (var i = 0; i < obj.coords.length; ++i) {
+                    if (obj.data_arr[i].toString() != '0') {
+                        obj.context.fillStyle = 'white';
+                        RGraph.Text(obj.context, 'Verdana', 6.5, obj.coords[i][0] + (obj.coords[i][2] / 2), obj.coords[i][1] + (obj.coords[i][3] / 2), obj.data_arr[i].toString(), 'center', 'left', null, null, null, true);
+                    }
+                }
+            }
+            RGraph.Effects.Fade.In(bar, { 'duration': 2000, 'frames': 500 });
+            //RGraph.isOld() ? bar.Draw() : RGraph.Effects.Bar.Wave(bar);
+        }
+        function createTestMethosGraph() {
+            var bar = new RGraph.Bar('cvsMethod', methoDataValue);
+            bar.Set('chart.text.angle', 90);
+            bar.Set('chart.background.grid', false);
+            bar.Set('chart.labels', methoDataText);
+            bar.Set('chart.key', testResultStatus);
+            bar.Set('chart.colors', methoDataColor);
+            bar.Set('chart.key.colors', testResultColor);
+            bar.Set('chart.key.position.gutter.boxed', true);
+            bar.Set('chart.key.position', 'gutter');
+            bar.Set('chart.linewidth', 0.5);
+            bar.Set('chart.strokestyle', 'white');
+            bar.Set('chart.gutter.bottom', 150);
+            bar.Set('chart.gutter.left', 45);
+            bar.Set('chart.gutter.right', 5);
+            bar.Set('chart.variant', '3d');
+            bar.Set('chart.hmargin.grouped', 1);
+            bar.Set('chart.key.position.x', bar.canvas.width - 300);
+            bar.Set('chart.colors.sequential', methoDataColor);
+            bar.Set('chart.axis.color', '#ccc');
+            RGraph.Effects.Fade.In(bar, { 'duration': 2000, 'frames': 500 });
+            //RGraph.isOld() ? bar.Draw() : RGraph.Effects.Bar.Grow(bar);
+        }
+    </script>
+    <table class="FormWrapper" cellpadding="1" cellspacing="1">
+        <tr class="FormHead">
+            <td style="width: 250px; text-align: center">
+                Overall Test Result
+            </td>
+            <td style="text-align: center">
+                Overall Class Test Result
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <canvas id="cvsProject" width="240" height="320">[No canvas support]</canvas>
+            </td>
+            <td>
+                <canvas id="cvsClass" width="700" height="450">[No canvas support]</canvas>
+            </td>
+        </tr>
+        <tr class="FormHead">
+            <td colspan="2" style="text-align: center">
+                All Test Case Result
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center">
+                <canvas id="cvsMethod" width="800" height="450">[No canvas support]</canvas>
+            </td>
+        </tr>
+    </table>
+    <!--<div style="width: 100%">
+        <div style="text-align: center; float: left">
+        </div>
+        <div style="text-align: center; float: right">
+        </div>
+    </div>
+    <div style="width: 100%; text-align: center; clear: both">
+        
+    </div>-->
+</body>
+</html>

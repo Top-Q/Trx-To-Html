@@ -1,0 +1,5 @@
+D:\Imdadhusen\Samples\MSTestResultViewer\MSTestResultViewer\MSTestResultViewer.Consol\bin\Release\MSTestResultViewer.Consol.exe
+D:\Imdadhusen\Samples\MSTestResultViewer\MSTestResultViewer\MSTestResultViewer.Consol\bin\Release\MSTestResultViewer.Consol.pdb
+D:\Imdadhusen\Samples\MSTestResultViewer\MSTestResultViewer\MSTestResultViewer.Consol\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Imdadhusen\Samples\MSTestResultViewer\MSTestResultViewer\MSTestResultViewer.Consol\obj\x86\Release\MSTestResultViewer.Consol.exe
+D:\Imdadhusen\Samples\MSTestResultViewer\MSTestResultViewer\MSTestResultViewer.Consol\obj\x86\Release\MSTestResultViewer.Consol.pdb

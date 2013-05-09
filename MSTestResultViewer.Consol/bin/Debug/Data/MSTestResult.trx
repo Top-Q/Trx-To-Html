@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="340f2e90-af56-49f9-8084-c07eb829e3e3" name="imdadhusen.sunasara@ISPL_232 2012-09-21 16:15:41" runUser="INFOSTRETCH\imdadhusen.sunasara" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="76493456-cc19-4ac9-b696-a9617003b439">
+    <Deployment userDeploymentRoot="D:\Imdadhusen\Samples\EasytrxViewer\EasytrxViewer.Consol\bin\Debug\Data" useDefaultDeploymentRoot="false" runDeploymentRoot="imdadhusen.sunasara_ISPL_232 2012-09-21 16_15_41" />
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-09-21T16:15:41.0014805+05:30" queuing="2012-09-21T16:15:41.1134917+05:30" start="2012-09-21T16:15:41.1554959+05:30" finish="2012-09-21T16:15:41.5325336+05:30" />
+  <ResultSummary outcome="Failed">
+    <Counters total="13" executed="13" passed="7" error="0" failed="6" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="DBDatasetTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="fce00af0-a9f1-9842-9f8f-089966b1449c">
+      <Execution id="91405329-51fb-403c-800e-abe8a6ebe6e7" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.DataAccess.DataAccessTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DBDatasetTest" />
+    </UnitTest>
+    <UnitTest name="DBDatabaseServerTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="8c637964-56f6-b471-2ae8-246d0136c9d7">
+      <Execution id="8b8988d2-03d6-4692-b5a9-03af39091a77" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.DataAccess.DataAccessTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DBDatabaseServerTest" />
+    </UnitTest>
+    <UnitTest name="SubtractionTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="3acc7f5e-72e2-32cc-97be-16136533d4a5">
+      <Execution id="fa62c337-c049-48f2-94b3-cd041491ad20" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.ArithmaticTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="SubtractionTest" />
+    </UnitTest>
+    <UnitTest name="ExecuteScalerTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="b4942262-46a2-a5cc-7ff5-277881938c58">
+      <Execution id="9838c60f-92e2-439a-bea0-142b5c987efb" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.DataAccess.DataTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ExecuteScalerTest" />
+    </UnitTest>
+    <UnitTest name="ExecuteReaderTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="ad45f5b3-4a17-f922-8b79-51f32e8e672e">
+      <Execution id="eb11372f-9ba8-4375-b620-f2818708a403" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.DataAccess.DataTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ExecuteReaderTest" />
+    </UnitTest>
+    <UnitTest name="UserNameAvailable" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="aa8ab02b-60e6-8638-53ba-81190ac4ed2b">
+      <Execution id="d89ff862-5667-48af-b9d8-1d9f6b24c914" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.Business.BusinessLogicTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UserNameAvailable" />
+    </UnitTest>
+    <UnitTest name="MultiplicationTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="12cfc1de-f8e7-01fe-cd0b-284bb281577f">
+      <Execution id="000e331a-d931-478e-beb3-a03f11d3ed0b" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.ArithmaticTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MultiplicationTest" />
+    </UnitTest>
+    <UnitTest name="IsEmailValid" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="1df454c0-127f-6d0b-adac-35c3a63401dc">
+      <Execution id="531d0594-a8b9-47ea-a8d3-97be6f56d3e3" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.Business.BusinessLogicTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="IsEmailValid" />
+    </UnitTest>
+    <UnitTest name="DivisionTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="d74b1d1a-c9e2-e467-f982-331391a243e2">
+      <Execution id="e87b6289-e4ec-4f99-9d26-e5d1e2b2a492" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.ArithmaticTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DivisionTest" />
+    </UnitTest>
+    <UnitTest name="SampleMethodTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="1690b15b-5ad3-4e8d-8a85-67b7385f6667">
+      <Execution id="298f07ad-1a81-468e-ab58-cc0fcc1c4b4b" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.SampleTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="SampleMethodTest" />
+    </UnitTest>
+    <UnitTest name="AdditionTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="e6e17c57-dc6d-9067-4ad6-52c0ac29ec48">
+      <Execution id="b363d5dc-8222-47c0-ab1b-b854ac25cb38" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.ArithmaticTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AdditionTest" />
+    </UnitTest>
+    <UnitTest name="DBConnectionTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="eb64db56-b8d6-94de-ba1a-5da68317a02b">
+      <Execution id="3ed0506d-ee1e-4b03-8482-752ef7ffcdf3" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.DataAccess.DataAccessTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DBConnectionTest" />
+    </UnitTest>
+    <UnitTest name="ExecuteNoneQueryTest" storage="d:\imdadhusen\samples\mstestproject\mstestproject\bin\debug\mstestproject.dll" id="d7bacf55-8f38-823b-4f3f-728601cc21d3">
+      <Execution id="fa84095c-7530-4454-9567-52285ffeb1f2" />
+      <TestMethod codeBase="D:/Imdadhusen/Samples/MSTestProject/MSTestProject/bin/Debug/MSTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MSTestProject.DataAccess.DataTest, MSTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ExecuteNoneQueryTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="e6e17c57-dc6d-9067-4ad6-52c0ac29ec48" executionId="b363d5dc-8222-47c0-ab1b-b854ac25cb38" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d74b1d1a-c9e2-e467-f982-331391a243e2" executionId="e87b6289-e4ec-4f99-9d26-e5d1e2b2a492" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="12cfc1de-f8e7-01fe-cd0b-284bb281577f" executionId="000e331a-d931-478e-beb3-a03f11d3ed0b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3acc7f5e-72e2-32cc-97be-16136533d4a5" executionId="fa62c337-c049-48f2-94b3-cd041491ad20" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1df454c0-127f-6d0b-adac-35c3a63401dc" executionId="531d0594-a8b9-47ea-a8d3-97be6f56d3e3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aa8ab02b-60e6-8638-53ba-81190ac4ed2b" executionId="d89ff862-5667-48af-b9d8-1d9f6b24c914" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eb64db56-b8d6-94de-ba1a-5da68317a02b" executionId="3ed0506d-ee1e-4b03-8482-752ef7ffcdf3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8c637964-56f6-b471-2ae8-246d0136c9d7" executionId="8b8988d2-03d6-4692-b5a9-03af39091a77" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fce00af0-a9f1-9842-9f8f-089966b1449c" executionId="91405329-51fb-403c-800e-abe8a6ebe6e7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d7bacf55-8f38-823b-4f3f-728601cc21d3" executionId="fa84095c-7530-4454-9567-52285ffeb1f2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ad45f5b3-4a17-f922-8b79-51f32e8e672e" executionId="eb11372f-9ba8-4375-b620-f2818708a403" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b4942262-46a2-a5cc-7ff5-277881938c58" executionId="9838c60f-92e2-439a-bea0-142b5c987efb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1690b15b-5ad3-4e8d-8a85-67b7385f6667" executionId="298f07ad-1a81-468e-ab58-cc0fcc1c4b4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="b363d5dc-8222-47c0-ab1b-b854ac25cb38" testId="e6e17c57-dc6d-9067-4ad6-52c0ac29ec48" testName="AdditionTest" computerName="ISPL_232" duration="00:00:00.0264857" startTime="2012-09-21T16:15:41.1634967+05:30" endTime="2012-09-21T16:15:41.4375241+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b363d5dc-8222-47c0-ab1b-b854ac25cb38">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;10&gt;. Actual:&lt;30&gt;. </Message>
+          <StackTrace>   at MSTestProject.ArithmaticTest.AdditionTest() in D:\Imdadhusen\Samples\MSTestProject\MSTestProject\ArithmaticTest.cs:line 41
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e87b6289-e4ec-4f99-9d26-e5d1e2b2a492" testId="d74b1d1a-c9e2-e467-f982-331391a243e2" testName="DivisionTest" computerName="ISPL_232" duration="00:00:00.0041270" startTime="2012-09-21T16:15:41.4395243+05:30" endTime="2012-09-21T16:15:41.4475251+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e87b6289-e4ec-4f99-9d26-e5d1e2b2a492">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method MSTestProject.ArithmaticTest.DivisionTest threw exception: 
+System.DivideByZeroException: Attempted to divide by zero.</Message>
+          <StackTrace>    at MSTestProject.ArithmaticTest.DivisionTest() in D:\Imdadhusen\Samples\MSTestProject\MSTestProject\ArithmaticTest.cs:line 24
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="000e331a-d931-478e-beb3-a03f11d3ed0b" testId="12cfc1de-f8e7-01fe-cd0b-284bb281577f" testName="MultiplicationTest" computerName="ISPL_232" duration="00:00:00.0001790" startTime="2012-09-21T16:15:41.4505254+05:30" endTime="2012-09-21T16:15:41.4545258+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="000e331a-d931-478e-beb3-a03f11d3ed0b">
+    </UnitTestResult>
+    <UnitTestResult executionId="fa62c337-c049-48f2-94b3-cd041491ad20" testId="3acc7f5e-72e2-32cc-97be-16136533d4a5" testName="SubtractionTest" computerName="ISPL_232" duration="00:00:00.0001767" startTime="2012-09-21T16:15:41.4565260+05:30" endTime="2012-09-21T16:15:41.4595263+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fa62c337-c049-48f2-94b3-cd041491ad20">
+    </UnitTestResult>
+    <UnitTestResult executionId="531d0594-a8b9-47ea-a8d3-97be6f56d3e3" testId="1df454c0-127f-6d0b-adac-35c3a63401dc" testName="IsEmailValid" computerName="ISPL_232" duration="00:00:00.0002145" startTime="2012-09-21T16:15:41.4615265+05:30" endTime="2012-09-21T16:15:41.4655269+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="531d0594-a8b9-47ea-a8d3-97be6f56d3e3">
+    </UnitTestResult>
+    <UnitTestResult executionId="d89ff862-5667-48af-b9d8-1d9f6b24c914" testId="aa8ab02b-60e6-8638-53ba-81190ac4ed2b" testName="UserNameAvailable" computerName="ISPL_232" duration="00:00:00.0001737" startTime="2012-09-21T16:15:41.4685272+05:30" endTime="2012-09-21T16:15:41.4715275+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d89ff862-5667-48af-b9d8-1d9f6b24c914">
+    </UnitTestResult>
+    <UnitTestResult executionId="3ed0506d-ee1e-4b03-8482-752ef7ffcdf3" testId="eb64db56-b8d6-94de-ba1a-5da68317a02b" testName="DBConnectionTest" computerName="ISPL_232" duration="00:00:00.0002667" startTime="2012-09-21T16:15:41.4735277+05:30" endTime="2012-09-21T16:15:41.4775281+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3ed0506d-ee1e-4b03-8482-752ef7ffcdf3">
+    </UnitTestResult>
+    <UnitTestResult executionId="8b8988d2-03d6-4692-b5a9-03af39091a77" testId="8c637964-56f6-b471-2ae8-246d0136c9d7" testName="DBDatabaseServerTest" computerName="ISPL_232" duration="00:00:00.0001596" startTime="2012-09-21T16:15:41.4795283+05:30" endTime="2012-09-21T16:15:41.4835287+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8b8988d2-03d6-4692-b5a9-03af39091a77">
+    </UnitTestResult>
+    <UnitTestResult executionId="91405329-51fb-403c-800e-abe8a6ebe6e7" testId="fce00af0-a9f1-9842-9f8f-089966b1449c" testName="DBDatasetTest" computerName="ISPL_232" duration="00:00:00.0011240" startTime="2012-09-21T16:15:41.4855289+05:30" endTime="2012-09-21T16:15:41.4895293+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="91405329-51fb-403c-800e-abe8a6ebe6e7">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;1&gt;. Actual:&lt;one&gt;. </Message>
+          <StackTrace>   at MSTestProject.DataAccess.DataAccessTest.DBDatasetTest() in D:\Imdadhusen\Samples\MSTestProject\MSTestProject\DataAccessTest.cs:line 21
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fa84095c-7530-4454-9567-52285ffeb1f2" testId="d7bacf55-8f38-823b-4f3f-728601cc21d3" testName="ExecuteNoneQueryTest" computerName="ISPL_232" duration="00:00:00.0002142" startTime="2012-09-21T16:15:41.4925296+05:30" endTime="2012-09-21T16:15:41.4955299+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fa84095c-7530-4454-9567-52285ffeb1f2">
+    </UnitTestResult>
+    <UnitTestResult executionId="eb11372f-9ba8-4375-b620-f2818708a403" testId="ad45f5b3-4a17-f922-8b79-51f32e8e672e" testName="ExecuteReaderTest" computerName="ISPL_232" duration="00:00:00.0011153" startTime="2012-09-21T16:15:41.4975301+05:30" endTime="2012-09-21T16:15:41.5025306+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eb11372f-9ba8-4375-b620-f2818708a403">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;1&gt;. Actual:&lt;one&gt;. </Message>
+          <StackTrace>   at MSTestProject.DataAccess.DataTest.ExecuteReaderTest() in D:\Imdadhusen\Samples\MSTestProject\MSTestProject\DataTest.cs:line 27
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9838c60f-92e2-439a-bea0-142b5c987efb" testId="b4942262-46a2-a5cc-7ff5-277881938c58" testName="ExecuteScalerTest" computerName="ISPL_232" duration="00:00:00.0010778" startTime="2012-09-21T16:15:41.5045308+05:30" endTime="2012-09-21T16:15:41.5085312+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9838c60f-92e2-439a-bea0-142b5c987efb">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;1&gt;. Actual:&lt;one&gt;. </Message>
+          <StackTrace>   at MSTestProject.DataAccess.DataTest.ExecuteScalerTest() in D:\Imdadhusen\Samples\MSTestProject\MSTestProject\DataTest.cs:line 15
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="298f07ad-1a81-468e-ab58-cc0fcc1c4b4b" testId="1690b15b-5ad3-4e8d-8a85-67b7385f6667" testName="SampleMethodTest" computerName="ISPL_232" duration="00:00:00.0011635" startTime="2012-09-21T16:15:41.5105314+05:30" endTime="2012-09-21T16:15:41.5155319+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="298f07ad-1a81-468e-ab58-cc0fcc1c4b4b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;1&gt;. Actual:&lt;one&gt;. </Message>
+          <StackTrace>   at MSTestProject.SampleTest.SampleMethodTest() in D:\Imdadhusen\Samples\MSTestProject\MSTestProject\SampleTest.cs:line 15
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

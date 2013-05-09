@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C0D78D0-3D4B-4B18-85B1-54D86287D572}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MSTestResultViewer.Consol</RootNamespace>
+    <AssemblyName>MSTestResultViewer.Consol</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="automation.cs">
+      <DependentUpon>automation.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="automation.Designer.cs">
+      <DependentUpon>automation.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Enums.cs" />
+    <Compile Include="ErrorInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestClasses.cs" />
+    <Compile Include="TestClassMethods.cs" />
+    <Compile Include="TestEnvironmentInfo.cs" />
+    <Compile Include="TestProjects.cs" />
+    <Compile Include="TestResultSummary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="automation.xml" />
+    <Content Include="Chart.htm" />
+    <Content Include="Images\ActionLicense.png" />
+    <Content Include="Images\datagrid_header_bg.gif" />
+    <Content Include="Images\MSTestResultViewer.ico" />
+    <Content Include="Images\MSTestResultViewerUninstaller.ico" />
+    <Content Include="Index.htm" />
+    <Content Include="Images\ActionChart.png" />
+    <Content Include="Images\ActionErrorWindow.png" />
+    <Content Include="Images\ActionHelp.png" />
+    <Content Include="Images\ActionPrint.png" />
+    <Content Include="Images\ActionHierarchyWindow.png" />
+    <Content Include="Images\bg.png" />
+    <Content Include="Images\button_a_bg.gif" />
+    <Content Include="Images\button_plain_hover.png" />
+    <Content Include="Images\button_span_bg.gif" />
+    <Content Include="Images\Class.png" />
+    <Content Include="Images\Method.png" />
+    <Content Include="Images\MSTestResultViewer.png" />
+    <Content Include="Images\Namespace.png" />
+    <Content Include="Images\Project.png" />
+    <Content Include="Images\StatusFailed.png" />
+    <Content Include="Images\StatusIngnored.png" />
+    <Content Include="Images\StatusPassed.png" />
+    <Content Include="Javascripts\grid.js" />
+    <Content Include="Javascripts\jquery.treeview.js" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.accordion.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.all.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.base.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.button.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.core.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.datepicker.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.dialog.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.progressbar.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.resizable.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.selectable.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.slider.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.tabs.css" />
+    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.theme.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery-ui-1.8.23.custom.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.accordion.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.all.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.autocomplete.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.base.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.button.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.core.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.datepicker.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.dialog.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.progressbar.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.resizable.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.selectable.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.slider.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.tabs.css" />
+    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.theme.css" />
+    <Content Include="Javascripts\jquery_002.js" />
+    <Content Include="Library\layout.jquery\jquery-latest.js" />
+    <Content Include="Library\layout.jquery\jquery-ui-latest.js" />
+    <Content Include="Library\layout.jquery\jquery.layout-latest.js" />
+    <Content Include="Library\layout.jquery\layout-default-latest.css" />
+    <Content Include="License.htm" />
+    <Content Include="RGraph\excanvas\excanvas.js" />
+    <Content Include="RGraph\libraries\RGraph.bar.js" />
+    <Content Include="RGraph\libraries\RGraph.common.core.js" />
+    <Content Include="RGraph\libraries\RGraph.common.dynamic.js" />
+    <Content Include="RGraph\libraries\RGraph.common.effects.js" />
+    <Content Include="RGraph\libraries\RGraph.common.key.js" />
+    <Content Include="RGraph\libraries\RGraph.common.tooltips.js" />
+    <Content Include="RGraph\libraries\RGraph.pie.js" />
+    <Content Include="Styles\contentpage.css" />
+    <Content Include="Styles\jquery.treeview.css" />
+    <Content Include="Styles\default.css" />
+    <Content Include="Styles\ui.jqgrid.css" />
+    <Content Include="Support.htm" />
+    <Content Include="Table.htm" />
+    <Content Include="TestcaseHierarchy.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="automation.trx" />
+    <None Include="automation.xsc">
+      <DependentUpon>automation.xsd</DependentUpon>
+    </None>
+    <None Include="automation.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>automation.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="automation.xss">
+      <DependentUpon>automation.xsd</DependentUpon>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="Uninstall.bat" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

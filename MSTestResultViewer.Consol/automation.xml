@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="4f3f8a5a-445a-46d6-874d-5858c886c3c3" name="qa_automation@QAAUTOMATION-PC 2013-05-05 11:22:06" runUser="VISIONMAP\qa_automation" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="b6f6330e-2df6-42b7-bfb5-f6c12cedf5fb">
+    <Deployment userDeploymentRoot="C:\result" useDefaultDeploymentRoot="false" runDeploymentRoot="qa_automation_QAAUTOMATION-PC 2013-05-05 11_22_06" />
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-05-05T11:22:06.6960327+03:00" queuing="2013-05-05T11:22:06.9000531+03:00" start="2013-05-05T11:22:06.9660597+03:00" finish="2013-05-05T11:22:07.2660897+03:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="4" executed="4" passed="2" error="0" failed="2" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="QAAUTOMATION-PC" outcome="Warning" timestamp="2013-05-05T11:22:06.8270458+03:00">
+        <Text>Warning: Test Run deployment issue: The assembly or module 'Newtonsoft.Json' directly or indirectly referenced by the test container 'c:\dev\tfs\tfs\trunk\tfsautomationcore.tests\bin\release\tfsautomationcore.tests.dll' was not found.</Text>
+      </RunInfo>
+      <RunInfo computerName="QAAUTOMATION-PC" outcome="Warning" timestamp="2013-05-05T11:22:06.8270458+03:00">
+        <Text>Warning: Test Run deployment issue: The assembly or module 'Ionic.Zip' directly or indirectly referenced by the test container 'c:\dev\tfs\tfs\trunk\tfsautomationcore.tests\bin\release\tfsautomationcore.tests.dll' was not found.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="UnitTestSample2" storage="c:\dev\tfs\tfs\trunk\tfsautomationcore.tests\bin\release\tfsautomationcore.tests.dll" id="f60d09c9-25ac-111d-c596-ef300e00981b">
+      <TestCategory>
+        <TestCategoryItem TestCategory="test" />
+      </TestCategory>
+      <Execution id="7b5a0c8f-b4a1-4666-811e-9377beff861f" />
+      <TestMethod codeBase="C:/dev/TFS/Tfs/trunk/TfsAutomationCore.Tests/bin/Release/TfsAutomationCore.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TfsAutomationCore.Tests.Tests.UnitTest1, TfsAutomationCore.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnitTestSample2" />
+    </UnitTest>
+    <UnitTest name="UnitTestSample1" storage="c:\dev\tfs\tfs\trunk\tfsautomationcore.tests\bin\release\tfsautomationcore.tests.dll" id="f0b0ac34-7685-9a90-a31d-67a6e4c8e9ca">
+      <TestCategory>
+        <TestCategoryItem TestCategory="test" />
+      </TestCategory>
+      <Execution id="6b42fcb1-7d3e-4e42-b929-b30ff2a54353" />
+      <TestMethod codeBase="C:/dev/TFS/Tfs/trunk/TfsAutomationCore.Tests/bin/Release/TfsAutomationCore.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TfsAutomationCore.Tests.Tests.UnitTest1, TfsAutomationCore.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnitTestSample1" />
+    </UnitTest>
+    <UnitTest name="UnitTestSample3" storage="c:\dev\tfs\tfs\trunk\tfsautomationcore.tests\bin\release\tfsautomationcore.tests.dll" id="3313f174-90f4-3293-4493-04237ab2629d">
+      <TestCategory>
+        <TestCategoryItem TestCategory="test" />
+      </TestCategory>
+      <Execution id="a7f7c1be-89ff-4adc-8f82-5218f5347953" />
+      <TestMethod codeBase="C:/dev/TFS/Tfs/trunk/TfsAutomationCore.Tests/bin/Release/TfsAutomationCore.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TfsAutomationCore.Tests.Tests.UnitTest2, TfsAutomationCore.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnitTestSample3" />
+    </UnitTest>
+    <UnitTest name="UnitTestSample4" storage="c:\dev\tfs\tfs\trunk\tfsautomationcore.tests\bin\release\tfsautomationcore.tests.dll" id="db24d138-66f0-61d1-dc8e-c49d22f885e7">
+      <TestCategory>
+        <TestCategoryItem TestCategory="test" />
+      </TestCategory>
+      <Execution id="1ae2de1a-5144-44d6-841b-ef7ed7d816f8" />
+      <TestMethod codeBase="C:/dev/TFS/Tfs/trunk/TfsAutomationCore.Tests/bin/Release/TfsAutomationCore.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TfsAutomationCore.Tests.Tests.UnitTest2, TfsAutomationCore.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnitTestSample4" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="f0b0ac34-7685-9a90-a31d-67a6e4c8e9ca" executionId="6b42fcb1-7d3e-4e42-b929-b30ff2a54353" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f60d09c9-25ac-111d-c596-ef300e00981b" executionId="7b5a0c8f-b4a1-4666-811e-9377beff861f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3313f174-90f4-3293-4493-04237ab2629d" executionId="a7f7c1be-89ff-4adc-8f82-5218f5347953" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="db24d138-66f0-61d1-dc8e-c49d22f885e7" executionId="1ae2de1a-5144-44d6-841b-ef7ed7d816f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="6b42fcb1-7d3e-4e42-b929-b30ff2a54353" testId="f0b0ac34-7685-9a90-a31d-67a6e4c8e9ca" testName="UnitTestSample1" computerName="QAAUTOMATION-PC" duration="00:00:00.0101433" startTime="2013-05-05T11:22:06.9880619+03:00" endTime="2013-05-05T11:22:07.1880819+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b42fcb1-7d3e-4e42-b929-b30ff2a54353">
+      <Output>
+        <StdOut>this is Console out print1
+this Test should pass</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7b5a0c8f-b4a1-4666-811e-9377beff861f" testId="f60d09c9-25ac-111d-c596-ef300e00981b" testName="UnitTestSample2" computerName="QAAUTOMATION-PC" duration="00:00:00.0380824" startTime="2013-05-05T11:22:07.1890820+03:00" endTime="2013-05-05T11:22:07.2290860+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7b5a0c8f-b4a1-4666-811e-9377beff861f">
+      <Output>
+        <StdOut>this is Console out print2
+this Test should failed</StdOut>
+        <ErrorInfo>
+          <Message>Assert.Fail failed. </Message>
+          <StackTrace>   at TfsAutomationCore.Tests.Tests.UnitTest1.UnitTestSample2() in c:\dev\TFS\Tfs\trunk\TfsAutomationCore.Tests\Tests\UnitTest1.cs:line 26
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a7f7c1be-89ff-4adc-8f82-5218f5347953" testId="3313f174-90f4-3293-4493-04237ab2629d" testName="UnitTestSample3" computerName="QAAUTOMATION-PC" duration="00:00:00.0032118" startTime="2013-05-05T11:22:07.2300861+03:00" endTime="2013-05-05T11:22:07.2350866+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a7f7c1be-89ff-4adc-8f82-5218f5347953">
+      <Output>
+        <StdOut>this is Console out print3
+this Test should failed</StdOut>
+        <ErrorInfo>
+          <Message>Test method TfsAutomationCore.Tests.Tests.UnitTest2.UnitTestSample3 threw exception: 
+System.NullReferenceException: Exception from UnitTestSample3</Message>
+          <StackTrace>    at TfsAutomationCore.Tests.Tests.UnitTest2.UnitTestSample3() in c:\dev\TFS\Tfs\trunk\TfsAutomationCore.Tests\Tests\UnitTest2.cs:line 15
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1ae2de1a-5144-44d6-841b-ef7ed7d816f8" testId="db24d138-66f0-61d1-dc8e-c49d22f885e7" testName="UnitTestSample4" computerName="QAAUTOMATION-PC" duration="00:00:00.0001356" startTime="2013-05-05T11:22:07.2350866+03:00" endTime="2013-05-05T11:22:07.2370868+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1ae2de1a-5144-44d6-841b-ef7ed7d816f8">
+      <Output>
+        <StdOut>this is Console out print4
+this Test should pass</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
