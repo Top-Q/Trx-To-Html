@@ -12,5 +12,7 @@ namespace MSTestResultViewer.Consol
         public string Status { get; set; }
         public ErrorInfo Error { get; set; }
         public string Duration { get; set; }
+        public string Id { get; set; }
+        public string Category { get; set; }
     }
 }

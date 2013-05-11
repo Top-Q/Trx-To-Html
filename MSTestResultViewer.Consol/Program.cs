@@ -273,7 +273,8 @@ namespace MSTestResultViewer.Consol
 
             foreach (var unittest in testDef)
             {
-                var classFullDetails= unittest.TestMethod[0].className;
+                
+                var classFullDetails = unittest.TestMethod[0].className; //Should be only one TestMethod under UnitTest tag
                 int start =classFullDetails.IndexOf(comma);
                 var className = classFullDetails.Substring(0, start);
                 var temp = classFullDetails.Substring(start + 1);
@@ -285,10 +286,18 @@ namespace MSTestResultViewer.Consol
                      
                     var p = new TestProjects() { Name = projectName };
                     var found = testProjects.Find(proj => proj.Name.Equals(p.Name));
+                    var tcm = new TestClassMethods
+                                  {
+                                      Name = unittest.name,
+                                      Id = unittest.id,
+                                      Category = unittest.TestCategory[0].TestCategory
+                                  };
                     if (found.Classes == null)
                     {
                         found.Classes = new List<TestClasses>();
-                        found.Classes.Add(new TestClasses() { Name = className });
+                        var tc = new TestClasses {Name = className, Methods = new List<TestClassMethods>()};
+                        tc.Methods.Add(tcm);
+                        found.Classes.Add(tc);
                     }
                     else
                     {
@@ -296,7 +305,9 @@ namespace MSTestResultViewer.Consol
                         var classFound = found.Classes.Find(classInList => classInList.Name.Equals(classTemp.Name));
                         if (classFound == null)
                         {
-                            found.Classes.Add(new TestClasses() { Name = className });
+                            var tc= new TestClasses() {Name = className};
+                            tc.Methods.Add(tcm);
+                            found.Classes.Add(tc);
                         }
                         //else
                         //{
@@ -345,63 +356,93 @@ namespace MSTestResultViewer.Consol
             //    }
             //}
 
-            //Iterate through all the projects and then classes to get test methods details
-            TimeSpan durationProject = TimeSpan.Parse("00:00:00.00");
-            foreach (TestProjects _project in testProjects)
+
+            Int32 passed = 0;
+            Int32 failed = 0;
+            Int32 ignored = 0;
+            TimeSpan projectTotalDuration = TimeSpan.Parse("00:00:00.00");
+
+            foreach (var testReuslt in testRun.Results)
             {
-                Int32 _totalPassed = 0;
-                Int32 _totalFailed = 0;
-                Int32 _totalIgnored = 0;
-                foreach (TestClasses _class in _project.Classes)
+                var duration= testReuslt.duration;
+                var testOutcome= testReuslt.outcome;
+
+                switch (testOutcome.ToUpper())
                 {
-                    TimeSpan durationClass = TimeSpan.Parse("00:00:00.00");
-                    DataRow[] methods = ds.Tables[TABLE_TESTMETHOD].Select(COLUMN_CLASSNAME + " like '" + _class.Name + ", " + _project.Name + ", %'");
-                    if (methods != null && methods.Count() > 0)
-                    {
-                        _class.Methods = new List<TestClassMethods>();
-                        Int32 _passed = 0;
-                        Int32 _failed = 0;
-                        Int32 _ignored = 0;
-                        foreach (DataRow dr in methods)
-                        {
-                            TimeSpan durationMethod = TimeSpan.Parse("00:00:00.00");
-                            TestClassMethods _method = GetTestMethodDetails(ds, dr[ATTRIBUTE_TESTMETHODID].ToString());
-                            switch (_method.Status.ToUpper())
-                            {
-                                case "PASSED":
-                                    _passed++;
-                                    break;
-                                case "FAILED":
-                                    _failed++;
-                                    break;
-                                default:
-                                    _ignored++;
-                                    break;
-                            }
-                            _class.Passed = _passed;
-                            _class.Failed = _failed;
-                            _class.Ignored = _ignored;
-                            _class.Total = (_passed + _failed + _ignored);
-                            _class.Methods.Add(_method);
-
-                            durationClass += TimeSpan.Parse(_method.Duration);
-                        }
-                    }
-                    _totalPassed += _class.Passed;
-                    _totalFailed += _class.Failed;
-                    _totalIgnored += _class.Ignored;
-
-                    _class.Duration = durationClass.ToString();
-                    durationProject += TimeSpan.Parse(_class.Duration);
+                    case "PASSED":
+                        passed++;
+                        break;
+                    case "FAILED":
+                        failed++;
+                        break;
+                    default:
+                        ignored++;
+                        break;
                 }
-                _project.Passed = _totalPassed;
-                _project.Failed = _totalFailed;
-                _project.Ignored = _totalIgnored;
-                _project.Total = (_totalPassed + _totalFailed + _totalIgnored);
+                projectTotalDuration+= TimeSpan.Parse(duration);
 
-                _project.Duration = durationProject.ToString();
-                durationProject += TimeSpan.Parse(_project.Duration);
             }
+
+
+            //Iterate through all the projects and then classes to get test methods details
+            //TODO: support more than one test project[each project should have totla pass,total failed,total ignore ,and total tests,and total time of all the tests]
+            //TimeSpan durationProject = TimeSpan.Parse("00:00:00.00");
+            //foreach (TestProjects _project in testProjects)
+            //{
+            //    Int32 _totalPassed = 0;
+            //    Int32 _totalFailed = 0;
+            //    Int32 _totalIgnored = 0;
+            //    foreach (TestClasses _class in _project.Classes)
+            //    {
+            //        TimeSpan durationClass = TimeSpan.Parse("00:00:00.00");
+            //        DataRow[] methods = ds.Tables[TABLE_TESTMETHOD].Select(COLUMN_CLASSNAME + " like '" + _class.Name + ", " + _project.Name + ", %'");
+            //        if (methods != null && methods.Count() > 0)
+            //        {
+            //            _class.Methods = new List<TestClassMethods>();
+            //            Int32 _passed = 0;
+            //            Int32 _failed = 0;
+            //            Int32 _ignored = 0;
+            //            foreach (DataRow dr in methods)
+            //            {
+            //                TimeSpan durationMethod = TimeSpan.Parse("00:00:00.00");
+            //                TestClassMethods _method = GetTestMethodDetails(ds, dr[ATTRIBUTE_TESTMETHODID].ToString());
+            //                switch (_method.Status.ToUpper())
+            //                {
+            //                    case "PASSED":
+            //                        _passed++;
+            //                        break;
+            //                    case "FAILED":
+            //                        _failed++;
+            //                        break;
+            //                    default:
+            //                        _ignored++;
+            //                        break;
+            //                }
+
+            //                _class.Passed = _passed;
+            //                _class.Failed = _failed;
+            //                _class.Ignored = _ignored;
+            //                _class.Total = (_passed + _failed + _ignored);
+            //                _class.Methods.Add(_method);
+
+            //                durationClass += TimeSpan.Parse(_method.Duration);
+            //            }
+            //        }
+            //        _totalPassed += _class.Passed;
+            //        _totalFailed += _class.Failed;
+            //        _totalIgnored += _class.Ignored;
+
+            //        _class.Duration = durationClass.ToString();
+            //        durationProject += TimeSpan.Parse(_class.Duration);
+            //    }
+            //    _project.Passed = _totalPassed;
+            //    _project.Failed = _totalFailed;
+            //    _project.Ignored = _totalIgnored;
+            //    _project.Total = (_totalPassed + _totalFailed + _totalIgnored);
+
+            //    _project.Duration = durationProject.ToString();
+            //    durationProject += TimeSpan.Parse(_project.Duration);
+            //}
         }
         private static TestClassMethods GetTestMethodDetails(DataSet ds, string testID)
         {
@@ -486,6 +527,7 @@ namespace MSTestResultViewer.Consol
 
                     sb.Append("<li><span class=\"testClass\">" + classname + "</span>");
                     sb.Append("<ul>");
+                    
                     foreach (var _method in _class.Methods)
                     {
                         string imgStatus = "StatusFailed";

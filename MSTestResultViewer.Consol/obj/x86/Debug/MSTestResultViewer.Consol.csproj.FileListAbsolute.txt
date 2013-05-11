@@ -8,3 +8,8 @@ C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\bin\Debug\MSTestResultViewer
 C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.exe
 C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.pdb
 C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.csprojResolveAssemblyReference.cache
+C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.exe
+C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.pdb
+C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\MSTestResultViewer.Consol.exe
+C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\MSTestResultViewer.Consol.pdb
+C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.csprojResolveAssemblyReference.cache
