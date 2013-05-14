@@ -1203,7 +1203,8 @@ public partial class TestRunResultsUnitTestResultOutputErrorInfo {
         }
     }
 }
-namespace ReadResultXml {
+namespace MSTestResultViewer.Consol
+{
     
     
     public partial class NewDataSet {

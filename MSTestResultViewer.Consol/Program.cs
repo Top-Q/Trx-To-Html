@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Xml;
 using System.Xml.XPath;
 using System.Diagnostics;
 using System.Xml.Serialization;
+using System.Json;
 
 namespace MSTestResultViewer.Consol
 {
@@ -63,6 +65,7 @@ namespace MSTestResultViewer.Consol
 
         static string MSTestExePathParam = "";
         static string TestContainerFolderPathParam = "";
+        static string tempFolder ="";
         static string DestinationFolderParam = "";
         static string LogFileParam = "";
         static string HelpFileParam = "";
@@ -93,6 +96,13 @@ namespace MSTestResultViewer.Consol
             {
                 try
                 {
+                    string tempPath = Environment.GetEnvironmentVariable("temp");
+                    long ticks = DateTime.UtcNow.Ticks - DateTime.Parse("01/01/1970 00:00:00").Ticks;
+                    ticks /= 10000000; //Convert windows ticks to seconds
+                    var timestamp = ticks.ToString();
+                    tempFolder = Path.Combine(tempPath, timestamp,"Data");
+                    Directory.CreateDirectory(tempFolder);
+                   
                     Directory.CreateDirectory(DestinationFolderParam);
                     string appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                     folderPath = Path.Combine(Path.Combine(appPath, "Data"));
@@ -114,7 +124,7 @@ namespace MSTestResultViewer.Consol
                     CopyFilesWithSubFolders(Path.Combine(appPath, "Library"), Path.Combine(DestinationFolderParam, "Library"), true);
                     CopyFilesWithSubFolders(Path.Combine(appPath, "RGraph"), Path.Combine(DestinationFolderParam, "RGraph"), true);
                     CopyFilesWithSubFolders(Path.Combine(appPath, "Styles"), Path.Combine(DestinationFolderParam, "Styles"), true);
-                    CopyFilesWithSubFolders(Path.Combine(appPath, "Data"), Path.Combine(DestinationFolderParam, "Data"), true, "*.js");
+                    CopyFilesWithSubFolders(tempFolder, Path.Combine(DestinationFolderParam, "Data"), true);
                     CopyFilesWithSubFolders(Path.Combine(appPath, "Pages"), DestinationFolderParam, true);
                     Console.WriteLine(string.Format("File Transfer completed\n"));
 
@@ -148,89 +158,54 @@ namespace MSTestResultViewer.Consol
         #region "Private Methods"
         private static void Transform(string fileName)
         {
-            XmlDocument xmlDoc = new XmlDocument();
-            if (File.Exists(fileName))
+
+            Console.WriteLine(string.Format("Start gathering test environment information...\n"));
+            System.Threading.Thread.Sleep(SLEEP_EXECUTION_TIME);
+            SetTestEnvironmentInfo();
+
+            Console.WriteLine(string.Format("Start gathering test result summary...\n"));
+            System.Threading.Thread.Sleep(SLEEP_EXECUTION_TIME);
+            SetTestResultSummary();
+
+            Console.WriteLine(string.Format("Start gathering test classes methods information...\n"));
+            System.Threading.Thread.Sleep(SLEEP_EXECUTION_TIME);
+            SetTestClassMethods();
+
+            if (testProjects.Count >= 1)
             {
-                xmlDoc.Load(fileName);
-                XmlNodeList list = xmlDoc.GetElementsByTagName(TAG_UNITTEST);
-                foreach (XmlNode node in list)
-                {
-                    XmlAttribute newAttr = xmlDoc.CreateAttribute(ATTRIBUTE_TESTMETHODID);
-                    newAttr.Value = node.Attributes[ATTRIBUTE_ID].Value;
-                    node.ChildNodes[1].Attributes.Append(newAttr);
-                }
+                Console.WriteLine(string.Format("Start transforming test result into html...\n"));
+                System.Threading.Thread.Sleep(SLEEP_EXECUTION_TIME);
 
-                list = xmlDoc.GetElementsByTagName(TAG_ERRORINFO);
-                foreach (XmlNode node in list)
-                {
-                    XmlAttribute newAttr = xmlDoc.CreateAttribute(ATTRIBUTE_TESTMETHODID);
-                    newAttr.Value = (((node).ParentNode).ParentNode).Attributes[ATTRIBUTE_TESTID].Value;
-                    node.Attributes.Append(newAttr);
-                }
+                CreateTestHierarchy();
 
-                //xmlDoc.Save(fileName);
+                CreateTestResultTable();
 
-                DataSet ds = new DataSet();
-                ds.ReadXml(new XmlNodeReader(xmlDoc));
+                CreateTestResultChart();
 
-                if (ds != null && ds.Tables.Count >= 4)
-                {
-                    Console.WriteLine(string.Format("Start gathering test environment information...\n"));
-                    System.Threading.Thread.Sleep(SLEEP_EXECUTION_TIME);
-                    SetTestEnvironmentInfo(ds);
-
-                    Console.WriteLine(string.Format("Start gathering test result summary...\n"));
-                    System.Threading.Thread.Sleep(SLEEP_EXECUTION_TIME);
-                    SetTestResultSummary(ds);
-
-                    Console.WriteLine(string.Format("Start gathering test classes methods information...\n"));
-                    System.Threading.Thread.Sleep(SLEEP_EXECUTION_TIME);
-                    SetTestClassMethods(ds);
-
-                    if (testProjects.Count >= 1)
-                    {
-                        Console.WriteLine(string.Format("Start transforming test result into html...\n"));
-                        System.Threading.Thread.Sleep(SLEEP_EXECUTION_TIME);
-
-                        CreateTestHierarchy();
-
-                        CreateTestResultTable();
-
-                        CreateTestResultChart();
-
-                        Console.WriteLine(string.Format("TRX file transformation completed successfully. \nFile generated at: \"{0}.htm\"\n", trxFilePath));
-                    }
-                    else
-                    {
-                        Console.WriteLine(string.Format("No test cases are available for test\n"));
-                        Console.ReadLine();
-                    }
-                }
-                else
-                {
-                    Console.WriteLine(string.Format("No test cases are available for test\n"));
-                    Console.ReadLine();
-                }
+                Console.WriteLine(string.Format("TRX file transformation completed successfully. \nFile generated at: \"{0}.htm\"\n", trxFilePath));
             }
             else
             {
-                Console.WriteLine(string.Format("Test Result File (.trx) not found at \"" + trxFilePath + "\"!\n"));
+                Console.WriteLine(string.Format("No test cases are available for test\n"));
                 Console.ReadLine();
             }
+
+
+
         }
-        private static void SetTestEnvironmentInfo(DataSet ds)
+        private static void SetTestEnvironmentInfo()
         {
             //TODO: add validation for size >0
             var codebase = testRun.TestDefinitions[0].TestMethod[0].codeBase;
             var runUser = testRun.runUser;
             var trxfile = testRun.name;
             var cre = testRun.Times[0].creation;
-            var creationDate= Convert.ToDateTime(cre);
+            var creationDate = Convert.ToDateTime(cre);
             int idxattherate = trxfile.IndexOf("@") + 1;
             int idxspace = trxfile.IndexOf(" ");
             var machine = trxfile.Substring(idxattherate, idxspace - idxattherate);
 
-        
+
             testEnvironmentInfo = new TestEnvironmentInfo()
             {
                 MachineName = machine,
@@ -240,11 +215,11 @@ namespace MSTestResultViewer.Consol
                 Timestamp = creationDate,
             };
         }
-        private static void SetTestResultSummary(DataSet ds)
+        private static void SetTestResultSummary()
         {
             //TODO: check if there is size >0
             var counter = testRun.ResultSummary[0].Counters[0];
-           
+
 
             var st = testRun.Times[0].start;
             var startDate = Convert.ToDateTime(st);
@@ -252,7 +227,7 @@ namespace MSTestResultViewer.Consol
             var endDate = Convert.ToDateTime(end);
             var durationTime = endDate - startDate;
             var time = durationTime.ToString();
-             
+
 
             testResultSummary = new TestResultSummary()
             {
@@ -264,70 +239,212 @@ namespace MSTestResultViewer.Consol
                 TestEnvironment = testEnvironmentInfo
             };
         }
-        private static void SetTestClassMethods(DataSet ds)
+
+        private static TestRunResultsUnitTestResult GetResultOfTest(TestRunTestDefinitionsUnitTest test)
         {
-            HashSet<string> projects =new HashSet<string>();
+            TestRunResultsUnitTestResult res = null;
+            try
+            {
+                if (null != test)
+                {
+                    var id = test.id;
+                    foreach (var testRes in testRun.Results)
+                    {
+                        if (testRes.testId.Equals(id))
+                        {
+                            res = testRes;
+                            break;
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+            }
+
+
+            return res;
+
+
+
+        }
+
+        private static void SetTestClassMethods()
+        {
+            HashSet<string> projects = new HashSet<string>();
             var comma = ", ";
             testProjects = new List<TestProjects>();
-            var testDef= testRun.TestDefinitions;
+            var testDef = testRun.TestDefinitions;
 
             foreach (var unittest in testDef)
             {
-                
+                bool passed = false;
+                bool failed = false;
+                bool ignore = false;
+                var testRes = GetResultOfTest(unittest);
+
                 var classFullDetails = unittest.TestMethod[0].className; //Should be only one TestMethod under UnitTest tag
-                int start =classFullDetails.IndexOf(comma);
+                int start = classFullDetails.IndexOf(comma);
                 var className = classFullDetails.Substring(0, start);
                 var temp = classFullDetails.Substring(start + 1);
-                int end =temp.IndexOf(comma)-1 ;
+                int end = temp.IndexOf(comma) - 1;
+
+
+
+                var tcm = new TestClassMethods
+                {
+                    Name = unittest.name,
+                    Id = unittest.id,
+                    Category = unittest.TestCategory[0].TestCategory,
+                    Duration = TimeSpan.Parse(testRes.duration).ToString(),
+                    Status = testRes.outcome,
+                    Output = testRes.Output[0].StdOut,
+                    Type = testRes.testType,
+                    Error = GetErrorInfo(unittest)
+                };
+
+
+                var outcome = testRes.outcome;
+                switch (outcome.ToUpper())
+                {
+                    case "PASSED":
+                        passed = true;
+                        break;
+                    case "FAILED":
+                        failed = true;
+                        break;
+                    default:
+                        ignore = true;
+                        break;
+                }
+
+
 
                 var projectName = classFullDetails.Substring(start + comma.Length, end).Trim();
                 if (projects.Contains(projectName))
                 {
-                     
+
                     var p = new TestProjects() { Name = projectName };
-                    var found = testProjects.Find(proj => proj.Name.Equals(p.Name));
-                    var tcm = new TestClassMethods
-                                  {
-                                      Name = unittest.name,
-                                      Id = unittest.id,
-                                      Category = unittest.TestCategory[0].TestCategory
-                                  };
-                    if (found.Classes == null)
+                    var projectFound = testProjects.Find(proj => proj.Name.Equals(p.Name));
+                    var calssFound = projectFound.Classes.Find(clazz => clazz.Name.Equals(className));
+
+                    if (calssFound == null)
                     {
-                        found.Classes = new List<TestClasses>();
-                        var tc = new TestClasses {Name = className, Methods = new List<TestClassMethods>()};
+                        var tc = new TestClasses() { Name = className };
+
+                        if (passed)
+                        {
+                            tc.Passed++;
+                        }
+                        else if (failed)
+                        {
+                            tc.Failed++;
+                        }
+                        else
+                        {
+                            tc.Ignored++;
+                        }
+
+                        tc.Duration += TimeSpan.Parse(testRes.duration);
+
+
                         tc.Methods.Add(tcm);
-                        found.Classes.Add(tc);
+                        projectFound.Classes.Add(tc);
                     }
                     else
                     {
-                        var classTemp =new TestClasses() { Name = className };
-                        var classFound = found.Classes.Find(classInList => classInList.Name.Equals(classTemp.Name));
-                        if (classFound == null)
+                        if (passed)
                         {
-                            var tc= new TestClasses() {Name = className};
-                            tc.Methods.Add(tcm);
-                            found.Classes.Add(tc);
+                            calssFound.Passed++;
                         }
+                        else if (failed)
+                        {
+                            calssFound.Failed++;
+                        }
+                        else
+                        {
+                            calssFound.Ignored++;
+                        }
+                        calssFound.Duration += TimeSpan.Parse(testRes.duration);
+                        calssFound.Methods.Add(tcm);
                         //else
                         //{
                         // class alredy in the list of the proejcts.
                         //}
 
                     }
-                   
+
+
 
                 }
                 else
                 {
                     projects.Add(projectName);
                     var testproject = new TestProjects() { Name = projectName };
-                    testproject.Classes = new List<TestClasses>();
-                    testproject.Classes.Add(new TestClasses() { Name = className });
+
+                    var tc = new TestClasses { Name = className };
+
+                    if (passed)
+                    {
+                        tc.Passed++;
+                    }
+                    else if (failed)
+                    {
+                        tc.Failed++;
+                    }
+                    else
+                    {
+                        tc.Ignored++;
+                    }
+                    tc.Duration += TimeSpan.Parse(testRes.duration);
+
+                    tc.Methods.Add(tcm);
+                    testproject.Classes.Add(tc);
                     testProjects.Add(testproject);
-                    
+
                 }
-              
+
+            }
+
+            //TODO: support more than one test project[each project should have totla pass,total failed,total ignore ,and total tests,and total time of all the tests]
+            foreach (var testP in testProjects)
+            {
+                Int32 passed = 0;
+                Int32 failed = 0;
+                Int32 ignored = 0;
+                TimeSpan projectTotalDuration = TimeSpan.Parse("00:00:00.00");
+
+                foreach (var testReuslt in testRun.Results)
+                {
+                    var duration = testReuslt.duration;
+                    var testOutcome = testReuslt.outcome;
+
+                    switch (testOutcome.ToUpper())
+                    {
+                        case "PASSED":
+                            passed++;
+                            break;
+                        case "FAILED":
+                            failed++;
+                            break;
+                        default:
+                            ignored++;
+                            break;
+                    }
+                    projectTotalDuration += TimeSpan.Parse(duration);
+
+
+                }
+                testP.Duration = projectTotalDuration.ToString();
+                testP.Passed = passed;
+                testP.Failed = failed;
+                testP.Ignored = ignored;
+
+
+                testP.Total = (passed + failed + ignored);
             }
 
             //foreach (var projName in projects)
@@ -339,7 +456,7 @@ namespace MSTestResultViewer.Consol
             //DataView view = new DataView(ds.Tables[TABLE_TESTMETHOD]);
             //DataTable distinctValues = view.ToTable(true, COLUMN_CLASSNAME);
             //char[] delimiters = new char[] { ',' };
-    
+
 
             ////Iterate through all the projects for getting its classes
             //foreach (TestProjects project in testProjects)
@@ -357,35 +474,11 @@ namespace MSTestResultViewer.Consol
             //}
 
 
-            Int32 passed = 0;
-            Int32 failed = 0;
-            Int32 ignored = 0;
-            TimeSpan projectTotalDuration = TimeSpan.Parse("00:00:00.00");
 
-            foreach (var testReuslt in testRun.Results)
-            {
-                var duration= testReuslt.duration;
-                var testOutcome= testReuslt.outcome;
-
-                switch (testOutcome.ToUpper())
-                {
-                    case "PASSED":
-                        passed++;
-                        break;
-                    case "FAILED":
-                        failed++;
-                        break;
-                    default:
-                        ignored++;
-                        break;
-                }
-                projectTotalDuration+= TimeSpan.Parse(duration);
-
-            }
 
 
             //Iterate through all the projects and then classes to get test methods details
-            //TODO: support more than one test project[each project should have totla pass,total failed,total ignore ,and total tests,and total time of all the tests]
+
             //TimeSpan durationProject = TimeSpan.Parse("00:00:00.00");
             //foreach (TestProjects _project in testProjects)
             //{
@@ -444,65 +537,70 @@ namespace MSTestResultViewer.Consol
             //    durationProject += TimeSpan.Parse(_project.Duration);
             //}
         }
-        private static TestClassMethods GetTestMethodDetails(DataSet ds, string testID)
+        //private static TestClassMethods GetTestMethodDetails( string testID)
+        //{
+        //    TestClassMethods _method = null;
+        //    DataRow[] methods = ds.Tables[TABLE_UNITTESTRESULT].Select(ATTRIBUTE_TESTID + "='" + testID + "'");
+        //    if (methods != null && methods.Count() > 0)
+        //    {
+        //        _method = new TestClassMethods();
+        //        foreach (DataRow dr in methods)
+        //        {
+        //            _method.Name = dr[COLUMN_TESTNAME].ToString();
+        //            _method.Status = dr[COLUMN_OUTCOME].ToString();//(Enums.TestStatus)Enum.Parse(typeof(Enums.TestStatus), dr[COLUMN_OUTCOME].ToString());
+        //            _method.Error = GetErrorInfo(ds, testID);
+        //            _method.Duration = dr[COLUMN_DURATION].ToString();
+        //        }
+        //    }
+        //    return _method;
+        //}
+        private static ErrorInfo GetErrorInfo(TestRunTestDefinitionsUnitTest test)
         {
-            TestClassMethods _method = null;
-            DataRow[] methods = ds.Tables[TABLE_UNITTESTRESULT].Select(ATTRIBUTE_TESTID + "='" + testID + "'");
-            if (methods != null && methods.Count() > 0)
-            {
-                _method = new TestClassMethods();
-                foreach (DataRow dr in methods)
-                {
-                    _method.Name = dr[COLUMN_TESTNAME].ToString();
-                    _method.Status = dr[COLUMN_OUTCOME].ToString();//(Enums.TestStatus)Enum.Parse(typeof(Enums.TestStatus), dr[COLUMN_OUTCOME].ToString());
-                    _method.Error = GetErrorInfo(ds, testID);
-                    _method.Duration = dr[COLUMN_DURATION].ToString();
-                }
-            }
-            return _method;
-        }
-        private static ErrorInfo GetErrorInfo(DataSet ds, string testID)
-        {
+
+            var result = GetResultOfTest(test);
             ErrorInfo _error = null;
-            DataRow[] errorMethod = ds.Tables[TAG_ERRORINFO].Select(ATTRIBUTE_TESTMETHODID + "='" + testID + "'");
-            if (errorMethod != null && errorMethod.Count() > 0)
+
+            if (result != null && result.outcome.ToUpper().Equals("FAILED"))
             {
                 _error = new ErrorInfo();
                 string[] delimiters = new string[] { ":line " };
-                foreach (DataRow dr in errorMethod)
+                //  foreach (DataRow dr in errorMethod)
+                //  {
+                _error.Message = result.Output[0].ErrorInfo[0].Message;
+                _error.StackTrace = result.Output[0].ErrorInfo[0].StackTrace.ToString(CultureInfo.InvariantCulture);
+
+                // _error.Message = dr[COLUMN_MESSAGE].ToString();
+                // _error.StackTrace = dr[COLUMN_STACKTRACE].ToString();
+
+                string strLineNo = "0";
+                try
                 {
-                    _error.Message = dr[COLUMN_MESSAGE].ToString();
-                    _error.StackTrace = dr[COLUMN_STACKTRACE].ToString();
+                    strLineNo = _error.StackTrace.Split(delimiters, StringSplitOptions.RemoveEmptyEntries)[1];
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    Console.WriteLine("[WRANNING]: there is no stack line number in the TRX(see tag -stacktrace");
+                }
 
-                    string strLineNo="0";
-                    try
-                    {
-                      strLineNo = _error.StackTrace.Split(delimiters, StringSplitOptions.RemoveEmptyEntries)[1];
-                    }
-                    catch(IndexOutOfRangeException e )
-                    {
-                            Console.WriteLine("[WRANNING]: there is no stack line number in the TRX(see tag -stacktrace");
-                    }
-                
 
-                    Int32 LineNo;
-                    if (Int32.TryParse(strLineNo, out LineNo))
+                Int32 LineNo;
+                if (Int32.TryParse(strLineNo, out LineNo))
+                {
+                    LineNo = Convert.ToInt32(strLineNo);
+                }
+                else
+                {
+                    delimiters = strLineNo.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    if (delimiters.Length > 0)
                     {
-                        LineNo = Convert.ToInt32(strLineNo);
-                    }
-                    else
-                    {
-                        delimiters = strLineNo.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                        if (delimiters.Length > 0)
+                        if (Int32.TryParse(delimiters[0], out LineNo))
                         {
-                            if (Int32.TryParse(delimiters[0], out LineNo))
-                            {
-                                LineNo = Convert.ToInt32(delimiters[0]);
-                            }
+                            LineNo = Convert.ToInt32(delimiters[0]);
                         }
                     }
-                    _error.LineNo = LineNo;
                 }
+                _error.LineNo = LineNo;
+                //}
             }
             return _error;
         }
@@ -527,7 +625,7 @@ namespace MSTestResultViewer.Consol
 
                     sb.Append("<li><span class=\"testClass\">" + classname + "</span>");
                     sb.Append("<ul>");
-                    
+
                     foreach (var _method in _class.Methods)
                     {
                         string imgStatus = "StatusFailed";
@@ -566,6 +664,7 @@ namespace MSTestResultViewer.Consol
         }
         private static void CreateTestResultTable()
         {
+           List<TableItemInfo> tableItems = new List<TableItemInfo>();
             try
             {
                 StringBuilder sbenv = new StringBuilder();
@@ -575,23 +674,23 @@ namespace MSTestResultViewer.Consol
                 sbenv.Append("'MachineName':'" + testEnvironmentInfo.MachineName + "',");
                 sbenv.Append("'UserName':'" + testEnvironmentInfo.UserName + "',");
                 sbenv.Append("'OriginalTRXFile':'" + testEnvironmentInfo.OriginalTRXFile + "'");
-                sbenv.Append("};");
+                sbenv.Append("}; ");
                 WriteFile("Environment.js", sbenv.ToString());
 
                 StringBuilder sb = new StringBuilder();
-                sb.Append("$(function () {");
-                sb.Append(" $('#dvTestCodebase').text(environment.TestCodebase);");
-                sb.Append(" $('#dvGeneratedDate').text(environment.Timestamp);");
-                sb.Append(" $('#dvMachineName').text(environment.MachineName);");
-                sb.Append(" $('#dvUserName').text(environment.UserName);");
-                sb.Append(" $('#dvTRXFileName').text(environment.OriginalTRXFile);");
-                sb.Append("var mydata = [");
+                sb.Append("$(function () { \n \n ");
+                sb.Append(" $('#dvTestCodebase').text(environment.TestCodebase);\n ");
+                sb.Append(" $('#dvGeneratedDate').text(environment.Timestamp);\n");
+                sb.Append(" $('#dvMachineName').text(environment.MachineName);\n");
+                sb.Append(" $('#dvUserName').text(environment.UserName);\n");
+                sb.Append(" $('#dvTRXFileName').text(environment.OriginalTRXFile);\n\n");
+                sb.Append("var mydata =");
                 int counter = 0;
 
                 foreach (var _project in testProjects)
                 {
                     counter++;
-                    int total = _project.Passed + _project.Failed + _project.Ignored;
+                    int total = _project.Total;
                     double percentPass = (_project.Passed * 100);
                     if (percentPass > 0) percentPass = percentPass / total;
                     double percentFail = (_project.Failed * 100);
@@ -599,8 +698,39 @@ namespace MSTestResultViewer.Consol
                     double percentIgnore = (_project.Ignored * 100);
                     if (percentIgnore > 0) percentIgnore = percentIgnore / total;
                     string strPercent = string.Format("{0},{1},{2}", percentPass, percentFail, percentIgnore);
-                    string strProject = string.Format("{{id: \"{0}\", parent: \"{1}\", level: \"{2}\", Name:  \"{3}\", Passed: \"{4}\", Failed: \"{5}\", Ignored: \"{6}\", Percent: \"{7}\", Progress: \"{8}\", Time: \"{9}\", Message: \"{10}\", StackTrace: \"{11}\", LineNo: \"{12}\", isLeaf: {13}, expanded: {14}, loaded: {15}}},", counter, "", "0", _project.Name, _project.Passed, _project.Failed, _project.Ignored, string.Format("{0:00.00}", percentPass), strPercent, TimeSpan.Parse(_project.Duration).TotalMilliseconds, "", "", "", "false", "true", "true");
-                    sb.Append(strProject);
+
+                    var pTime =TimeSpan.Parse(_project.Duration).TotalMilliseconds;
+                    TableItemInfo root = new TableItemInfo(){id=counter,parent=0,level = "0",Name=_project.Name,Passed =_project.Passed,Failed =_project.Failed,Ignored = _project.Ignored,Percent = string.Format("{0:00.00}", percentPass),Progress =strPercent,Time =pTime,Message = "none",StackTrace = "none",LineNo = "none",isLeaf = false,expanded = true,loaded = true};
+
+                    tableItems.Add(root);
+
+
+                    //JsonObject projJson = new JsonObject();
+                    //projJson.Add("id", counter);
+                    //projJson.Add("parent", "none");
+                    //projJson.Add("level", "0");
+                    //projJson.Add("Name", _project.Name);
+                    //projJson.Add("Passed", _project.Passed);
+                    //projJson.Add("Failed", _project.Failed);
+                    //projJson.Add("Ignored", _project.Ignored);
+                    //projJson.Add("Percent", string.Format("{0:00.00}", percentPass));
+                    //projJson.Add("Progress", strPercent);
+                    //projJson.Add("Time", TimeSpan.Parse(_project.Duration).TotalMilliseconds);
+                    //projJson.Add("Message","none" );
+                    //projJson.Add("StackTrace","none");
+                    //projJson.Add("LineNo", "none");
+                    //projJson.Add("isLeaf", false);
+                    //projJson.Add("expanded",true);
+                    //projJson.Add("loaded",true );
+
+
+
+                    string strProject = string.Format("{{id: {0}, parent: {1}, level: {2}, Name:  {3}, Passed: {4}, Failed: {5}, Ignored: {6}, Percent: {7}, Progress: {8}, Time: {9}, Message: {10}, StackTrace: {11}, LineNo: {12}, isLeaf: {13}, expanded: {14}, loaded: {15}}},",
+                        counter, "none", "0", _project.Name, _project.Passed, _project.Failed, _project.Ignored, string.Format("{0:00.00}", percentPass), strPercent, TimeSpan.Parse(_project.Duration).TotalMilliseconds, "", "", "", "false", "true", "true");
+
+                   // JA.Add(projJson);
+
+                    //sb.Append(strProject);
                     int projParent = counter;
 
                     projectChartDataValue = "var projectData = [" + _project.Passed + ", " + _project.Failed + ", " + _project.Ignored + "];";
@@ -626,8 +756,29 @@ namespace MSTestResultViewer.Consol
                         else if (tmp.Length == 1)
                             classname = tmp[0];
 
-                        string strClass = string.Format("{{id: \"{0}\", parent: \"{1}\", level: \"{2}\", Name:  \"{3}\", Passed: \"{4}\", Failed: \"{5}\", Ignored: \"{6}\", Percent: \"{7}\", Progress: \"{8}\", Time: \"{9}\", Message: \"{10}\", StackTrace: \"{11}\", LineNo: \"{12}\", isLeaf: {13}, expanded: {14}, loaded: {15}}},", counter, projParent, "1", classname, _class.Passed, _class.Failed, _class.Ignored, string.Format("{0:00.00}", percentPass), strPercent, TimeSpan.Parse(_class.Duration).TotalMilliseconds, "", "", "", "false", "true", "true");
-                        sb.Append(strClass);
+
+                        var cTime = _class.Duration.TotalMilliseconds;
+                        TableItemInfo classInfo = new TableItemInfo() 
+                        {   id = counter,
+                            parent = projParent, 
+                            level = "1",
+                            Name = classname,
+                            Passed = _class.Passed,
+                            Failed = _class.Failed,
+                            Ignored = _class.Ignored, 
+                            Percent = string.Format("{0:00.00}",percentPass),
+                            Progress = strPercent,
+                            Time = cTime,
+                            Message = "none", 
+                            StackTrace = "none",
+                            LineNo = "none", 
+                            isLeaf = false, 
+                            expanded = true, 
+                            loaded = true 
+                        };
+
+                        tableItems.Add(classInfo);
+                      
                         int classParent = counter;
 
                         classChartDataValue += "[" + _class.Passed + ", " + _class.Failed + ", " + _class.Ignored + "],";
@@ -675,8 +826,30 @@ namespace MSTestResultViewer.Consol
                                 strLine = _method.Error.LineNo.ToString();
                             }
 
-                            string strMethod = string.Format("{{id: \"{0}\", parent: \"{1}\", level: \"{2}\", Name:  \"{3}\", Passed: \"{4}\", Failed: \"{5}\", Ignored: \"{6}\", Percent: \"{7}\", Progress: \"{8}\", Time: \"{9}\", Message: \"{10}\", StackTrace: \"{11}\", LineNo: \"{12}\", isLeaf: {13}, expanded: {14}, loaded: {15}}},", counter, classParent, "2", _method.Name, _passed, _failed, _ignored, string.Format("{0:00.00}", percentPass), strPercent, TimeSpan.Parse(_method.Duration).TotalMilliseconds, strError, strStack, strLine, "true", "false", "true");
-                            sb.Append(strMethod);
+                            
+
+                            var mTime = _class.Duration.TotalMilliseconds;
+                            TableItemInfo methodInfo = new TableItemInfo()
+                            {
+                                id = counter,
+                                parent = classParent,
+                                level = "2",
+                                Name = _method.Name,
+                                Passed = _passed,
+                                Failed = _failed,
+                                Ignored = _ignored,
+                                Percent = string.Format("{0:00.00}", percentPass),
+                                Progress = strPercent,
+                                Time = mTime,
+                                Message = strError,
+                                StackTrace = strStack,
+                                LineNo = strLine,
+                                isLeaf = true,
+                                expanded = false,
+                                loaded = true
+                            };
+
+                            tableItems.Add(methodInfo);
                         }
                     }
 
@@ -687,88 +860,95 @@ namespace MSTestResultViewer.Consol
                     methoChartDataText = "var methoDataText = [" + methoChartDataText + "];";
                     methoChartDataColor = "var methoDataColor = [" + methoChartDataColor + "];";
                 }
-                sb.Append("],");
-                sb.Append("getColumnIndexByName = function (grid, columnName) {");
-                sb.Append("var cm = grid.jqGrid('getGridParam', 'colModel');");
-                sb.Append("for (var i = 0; i < cm.length; i += 1) {");
-                sb.Append("if (cm[i].name === columnName) {");
-                sb.Append("return i;");
-                sb.Append("}");
-                sb.Append("}");
-                sb.Append("return -1;");
-                sb.Append("},");
-                sb.Append("grid = $('#treegrid');");
-                sb.Append("grid.jqGrid({");
-                sb.Append("datatype: 'jsonstring',");
-                sb.Append("datastr: mydata,");
-                sb.Append("colNames: ['Id', 'Name', 'Passed', 'Failed', 'Ignored', '%', '', 'Time', 'Message','StackTrace','LineNo'],");
-                sb.Append("colModel: [");
-                sb.Append("{ name: 'id', index: 'id', width: 1, hidden: true, key: true },");
-                sb.Append("{ name: 'Name', index: 'Name', width: 380 },");
-                sb.Append("{ name: 'Passed', index: 'Passed', width: 70, align: 'right', formatter: testCounterFormat },");
-                sb.Append("{ name: 'Failed', index: 'Failed', width: 70, align: 'right', formatter: testCounterFormat },");
-                sb.Append("{ name: 'Ignored', index: 'Ignored', width: 70, align: 'right', formatter: testCounterFormat },");
-                sb.Append("{ name: 'Percent', index: 'Percent', width: 50, align: 'right' },");
-                sb.Append("{ name: 'Progress', index: 'Progress', width: 200, align: 'right', formatter: progressFormat },");
-                sb.Append("{ name: 'Time', index: 'Time', width: 75, align: 'right'},");
-                sb.Append("{ name: 'Message', index: 'Message', hidden: true, width: 100, align: 'right'},");
-                sb.Append("{ name: 'StackTrace', index: 'StackTrace', hidden: true, width: 100, align: 'right'},");
-                sb.Append("{ name: 'LineNo', index: 'LineNo', width: 100, hidden: true, align: 'right'}],");
-                sb.Append("height: 'auto',");
-                sb.Append("gridview: true,");
-                sb.Append("rowNum: 10000,");
-                sb.Append("sortname: 'id',");
-                sb.Append("treeGrid: true,");
-                sb.Append("treeGridModel: 'adjacency',");
-                sb.Append("treedatatype: 'local',");
-                sb.Append("ExpandColumn: 'Name',");
 
-                sb.Append("ondblClickRow: function(id) {");
-                sb.Append("parent.innerLayout.open('south');");
-                sb.Append("setErrorInfo(id);");
-                sb.Append("},");
+              //  sb.Append(JA.ToString());
+                sb.Append(tableItems.ToJSON());
 
-                sb.Append("onSelectRow: function(id){");
-                sb.Append("setErrorInfo(id);");
-                sb.Append("},");
+                sb.Append("\n\n");
+                //  sb.Append("],");
+                sb.Append("getColumnIndexByName = function (grid, columnName) {\n");
+                sb.Append("var cm = grid.jqGrid('getGridParam', 'colModel');\n");
+                sb.Append("for (var i = 0; i < cm.length; i += 1) {\n");
+                sb.Append("if (cm[i].name === columnName) {\n");
+                sb.Append("return i;\n");
+                sb.Append("}\n");
+                sb.Append("}\n");
+                sb.Append("return -1;\n");
+                sb.Append("},\n");
+                sb.Append("grid = $('#treegrid');\n");
+                sb.Append("grid.jqGrid({\n");
+                sb.Append("datatype: 'jsonstring',\n");
+                sb.Append("datastr: mydata,\n");
+                sb.Append("colNames: ['Id', 'Name', 'Passed', 'Failed', 'Ignored', '%', '', 'Time', 'Message','StackTrace','LineNo'],\n");
+                sb.Append("colModel: [\n");
+                sb.Append("{ name: 'id', index: 'id', width: 1, hidden: true, key: true },\n");
+                sb.Append("{ name: 'Name', index: 'Name', width: 380 },\n");
+                sb.Append("{ name: 'Passed', index: 'Passed', width: 70, align: 'right', formatter: testCounterFormat },\n");
+                sb.Append("{ name: 'Failed', index: 'Failed', width: 70, align: 'right', formatter: testCounterFormat },\n");
+                sb.Append("{ name: 'Ignored', index: 'Ignored', width: 70, align: 'right', formatter: testCounterFormat },\n");
+                sb.Append("{ name: 'Percent', index: 'Percent', width: 50, align: 'right' },\n");
+                sb.Append("{ name: 'Progress', index: 'Progress', width: 250, align: 'right', formatter: progressFormat },\n");
+                sb.Append("{ name: 'Time', index: 'Time', width: 100, align: 'right'},\n");
+                sb.Append("{ name: 'Message', index: 'Message', hidden: true, width: 100, align: 'right'},\n");
+                sb.Append("{ name: 'StackTrace', index: 'StackTrace', hidden: true, width: 100, align: 'right'},\n");
+                sb.Append("{ name: 'LineNo', index: 'LineNo', width: 100, hidden: true, align: 'right'}],\n");
+              //  sb.Append("{ name: 'Test Output', index: 'Test Output', width: auto,height: auto, hidden: true, align: 'up'}],\n");
 
-                sb.Append("jsonReader: {");
-                sb.Append("repeatitems: false,");
-                sb.Append("root: function (obj) { return obj; },");
-                sb.Append("page: function (obj) { return 1; },");
-                sb.Append("total: function (obj) { return 1; },");
-                sb.Append("records: function (obj) { return obj.length; }");
-                sb.Append("}");
-                sb.Append("});");
+                sb.Append("height: 'auto',\n");
+                sb.Append("gridview: true,\n");
+                sb.Append("rowNum: 10000,\n");
+                sb.Append("sortname: 'id',\n");
+                sb.Append("treeGrid: true,\n");
+                sb.Append("treeGridModel: 'adjacency',\n");
+                sb.Append("treedatatype: 'local',\n");
+                sb.Append("ExpandColumn: 'Name',\n");
 
-                sb.Append("function setErrorInfo(id) {");
-                sb.Append("var doc = $('#tblError', top.document);");
-                sb.Append("doc.find('#dvErrorMessage').text($('#treegrid').getRowData(id)['Message']);");
-                sb.Append("doc.find('#dvLineNumber').text($('#treegrid').getRowData(id)['LineNo']);");
-                sb.Append("doc.find('#dvStackTrace').text($('#treegrid').getRowData(id)['StackTrace']);");
-                sb.Append("}");
+                sb.Append("ondblClickRow: function(id) {\n");
+                sb.Append("parent.innerLayout.open('south');\n");
+                sb.Append("setErrorInfo(id);\n");
+                sb.Append("},\n");
 
-                sb.Append("function progressFormat(cellvalue, options, rowObject) {");
-                sb.Append("var progress = cellvalue.split(',');");
-                sb.Append("var pass = Math.round(progress[0]) * 2;");
-                sb.Append("var fail = Math.round(progress[1]) * 2;");
-                sb.Append("var ignore = Math.round(progress[2]) * 2;");
+                sb.Append("onSelectRow: function(id){\n");
+                sb.Append("setErrorInfo(id);\n");
+                sb.Append("},\n");
+
+                sb.Append("jsonReader: {\n");
+                sb.Append("repeatitems: false,\n");
+                sb.Append("root: function (obj) { return obj; },\n");
+                sb.Append("page: function (obj) { return 1; },\n");
+                sb.Append("total: function (obj) { return 1; },\n");
+                sb.Append("records: function (obj) { return obj.length; }\n");
+                sb.Append("}\n");
+                sb.Append("});\n");
+
+                sb.Append("function setErrorInfo(id) {\n");
+                sb.Append("var doc = $('#tblError', top.document);\n");
+                sb.Append("doc.find('#dvErrorMessage').text($('#treegrid').getRowData(id)['Message']);\n");
+                sb.Append("doc.find('#dvLineNumber').text($('#treegrid').getRowData(id)['LineNo']);\n");
+                sb.Append("doc.find('#dvStackTrace').text($('#treegrid').getRowData(id)['StackTrace']);\n");
+                sb.Append("}\n");
+
+                sb.Append("function progressFormat(cellvalue, options, rowObject) {\n");
+                sb.Append("var progress = cellvalue.split(',');\n");
+                sb.Append("var pass = Math.round(progress[0]) * 2;\n");
+                sb.Append("var fail = Math.round(progress[1]) * 2;\n");
+                sb.Append("var ignore = Math.round(progress[2]) * 2;\n");
                 sb.Append("var strProgress = \"<div class='ProgressWrapper'>");
                 sb.Append("<div class='ProgressPass' title='\"+ Number(progress[0]).toFixed(2) +\"% Passed' style='width: \" + pass + \"px'></div>");
                 sb.Append("<div class='ProgressFail' title='\"+ Number(progress[1]).toFixed(2) +\"% Failed' style='width: \" + fail + \"px'></div>");
                 sb.Append("<div class='ProgressIgnore' title='\"+ Number(progress[2]).toFixed(2) +\"% Ignored' style='width: \" + ignore + \"px'></div>");
-                sb.Append("</div>\";");
-                sb.Append("return strProgress;");
-                sb.Append("}");
+                sb.Append("</div>\";\n");
+                sb.Append("return strProgress;\n");
+                sb.Append("}\n");
 
-                sb.Append("function testCounterFormat(cellvalue, options, rowObject) {");
-                sb.Append("return cellvalue;");
-                sb.Append("}");
-                sb.Append("grid.jqGrid('setLabel', 'Passed', '', { 'text-align': 'right' });");
-                sb.Append("grid.jqGrid('setLabel', 'Failed', '', { 'text-align': 'right' });");
-                sb.Append("grid.jqGrid('setLabel', 'Ignored', '', { 'text-align': 'right' });");
-                sb.Append("grid.jqGrid('setLabel', 'Percent', '', { 'text-align': 'right' });");
-                sb.Append("});");
+                sb.Append("function testCounterFormat(cellvalue, options, rowObject) {\n");
+                sb.Append("return cellvalue;\n");
+                sb.Append("}\n");
+                sb.Append("grid.jqGrid('setLabel', 'Passed', '', { 'text-align': 'right' });\n");
+                sb.Append("grid.jqGrid('setLabel', 'Failed', '', { 'text-align': 'right' });\n");
+                sb.Append("grid.jqGrid('setLabel', 'Ignored', '', { 'text-align': 'right' });\n");
+                sb.Append("grid.jqGrid('setLabel', 'Percent', '', { 'text-align': 'right' });\n");
+                sb.Append("})\n");
                 string xmlTestResultTable = sb.ToString().Replace("},],", "}],");
                 WriteFile("Table.js", xmlTestResultTable);
             }
@@ -794,8 +974,9 @@ namespace MSTestResultViewer.Consol
         }
         private static void WriteFile(string FileName, string FileContent)
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(folderPath, FileName)))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(tempFolder, FileName)))
             {
+                Console.WriteLine("[Write file - " + Path.Combine(tempFolder, FileName)+"]");
                 file.WriteLine(FileContent);
             }
         }

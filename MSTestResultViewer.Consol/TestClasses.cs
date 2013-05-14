@@ -7,12 +7,19 @@ namespace MSTestResultViewer.Consol
 {
     class TestClasses
     {
+
+        public TestClasses()
+        {
+            Methods = new List<TestClassMethods>();
+            Duration = TimeSpan.Parse("00:00:00.00");
+        }
+
         public string Name { get; set; }
         public Int32 Passed { get; set; }
         public Int32 Failed { get; set; }
         public Int32 Ignored { get; set; }
         public Int32 Total { get; set; }
-        public string Duration { get; set; }
+        public TimeSpan Duration { get; set; }
         public List<TestClassMethods> Methods { get; set; }
     }
 }

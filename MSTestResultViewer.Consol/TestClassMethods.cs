@@ -14,5 +14,7 @@ namespace MSTestResultViewer.Consol
         public string Duration { get; set; }
         public string Id { get; set; }
         public string Category { get; set; }
+        public string Output { get; set; }
+        public string Type { get; set; }
     }
 }

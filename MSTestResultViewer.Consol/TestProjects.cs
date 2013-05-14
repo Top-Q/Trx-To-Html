@@ -7,6 +7,11 @@ namespace MSTestResultViewer.Consol
 {
     class TestProjects
     {
+
+        public TestProjects()
+        {
+           Classes = new List<TestClasses>();
+        }
         public string Name { get; set; }
         public Int32 Passed { get; set; }
         public Int32 Failed { get; set; }
