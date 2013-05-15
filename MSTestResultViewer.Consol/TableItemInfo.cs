@@ -24,6 +24,7 @@ namespace MSTestResultViewer.Consol
         public bool isLeaf { get; set; }
         public bool expanded { get; set; }
         public bool loaded { get; set; }
+        public string TestOutput { get; set; }
                  
                
        

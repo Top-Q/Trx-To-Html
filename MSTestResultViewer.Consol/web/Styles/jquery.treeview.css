@@ -1,0 +1,122 @@
+html, body
+{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Verdana,helvetica,arial,sans-serif;
+    font-size: 11px;
+}
+.treeview, .treeview ul
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.treeview ul
+{
+    background-color: white;
+    margin-top: 1px;
+}
+
+.treeview .hitarea
+{
+    background: url(../Images/TreeviewHierarchy.gif) -64px -25px no-repeat;
+    height: 16px;
+    width: 16px;
+    margin-left: -16px;
+    float: left;
+    cursor: pointer;
+}
+/* fix for IE6 */
+* html .hitarea
+{
+    display: inline;
+    float: none;
+}
+
+.treeview li
+{
+    margin: 0;
+    padding: 3px 0pt 1px 16px;
+}
+
+.treeview a.selected
+{
+    background-color: #eee;
+}
+
+#treecontrol
+{
+    margin: 1em 0;
+    display: none;
+}
+
+.treeview .hover
+{
+    color: #007BE7;
+    cursor: pointer;
+}
+
+.treeview li
+{
+    background: url(../Images/TreeviewHierarchyLine.gif) 0 0 no-repeat;
+}
+.treeview li.collapsable, .treeview li.expandable
+{
+    background-position: 0 -176px;
+}
+
+.treeview .expandable-hitarea
+{
+    background-position: -80px -3px;
+}
+
+.treeview li.last
+{
+    background-position: 0 -1766px;
+}
+.treeview li.lastCollapsable, .treeview li.lastExpandable
+{
+    background-image: url(../Images/TreeviewHierarchy.gif);
+}
+.treeview li.lastCollapsable
+{
+    background-position: 0 -111px;
+}
+.treeview li.lastExpandable
+{
+    background-position: -32px -67px;
+}
+.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea
+{
+    background-position: 0;
+}
+.TestHierarchyTree li
+{
+    padding: 3px 0 1px 16px;
+}
+.TestHierarchyTree span.testProject, .TestHierarchyTree span.testClass, .TestHierarchyTree span.testMethod
+{
+    padding: 3px 0 0 18px;
+    display: block;
+}
+.TestHierarchyTree span.testProject
+{
+    background: url(../Images/Project.png) 0 0 no-repeat;
+}
+.TestHierarchyTree span.testClass
+{
+    background: url(../Images/Class.png) 0 0 no-repeat;
+}
+.TestHierarchyTree span.testMethod
+{
+    background: url(../Images/Method.png) 0 0 no-repeat;
+    
+}
+.TestHierarchyTree li.expandable span.folder
+{
+    /* background: url(../Images/folder-closed.gif) 0 0 no-repeat;*/
+}

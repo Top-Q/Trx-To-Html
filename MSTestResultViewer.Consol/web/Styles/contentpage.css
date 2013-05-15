@@ -1,0 +1,52 @@
+﻿.Progress, .ProgressWrapper, .ProgressPass, .ProgressFail, .ProgressIgnore
+{
+    height: 15px;
+}
+.ProgressWrapper
+{
+    border: 1px solid #DADADA;
+    width: 200px;
+    border-radius: 4px;
+    margin: 0px;
+    padding: 0px;
+}
+.ProgressPass
+{
+    background-color: #ABD874;
+    float: left;
+}
+.ProgressFail
+{
+    background-color: #E18D87;
+    float: left;
+}
+.ProgressIgnore
+{
+    background-color: #F4AD7C;
+    float: left;
+}
+.FormWrapper
+{
+    border: 1px solid #EEEEEE;
+    width: 100%;
+    font-family: Verdana,helvetica,arial,sans-serif;
+    font-size: 11px;
+}
+.FormHead td
+{
+    background: url("Images/datagrid_header_bg.gif") repeat-x scroll left bottom #FAFAFA;
+    border-bottom: 1px solid #EEEEEE;
+    height: 22px;
+    padding-left: 5px;
+}
+.FormData td
+{
+    height: 22px;
+}
+.FormSubHead
+{
+    border-bottom: 1px dotted #CCCCCC;
+    border-right: 1px dotted #CCCCCC;
+    padding-left: 20px;
+    width:200px;
+}

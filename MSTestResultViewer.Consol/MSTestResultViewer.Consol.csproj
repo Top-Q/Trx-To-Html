@@ -83,6 +83,11 @@
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TableItemInfo.cs" />
     <Compile Include="TestClasses.cs" />
     <Compile Include="TestClassMethods.cs" />
@@ -92,111 +97,291 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="automation.xml" />
-    <Content Include="Chart.htm" />
-    <Content Include="Images\ActionLicense.png" />
-    <Content Include="Images\datagrid_header_bg.gif" />
-    <Content Include="Images\MSTestResultViewer.ico" />
-    <Content Include="Images\MSTestResultViewerUninstaller.ico" />
-    <Content Include="Images\ActionChart.png" />
-    <Content Include="Images\ActionErrorWindow.png" />
-    <Content Include="Images\ActionHelp.png" />
-    <Content Include="Images\ActionPrint.png" />
-    <Content Include="Images\ActionHierarchyWindow.png" />
-    <Content Include="Images\bg.png" />
-    <Content Include="Images\button_a_bg.gif" />
-    <Content Include="Images\button_plain_hover.png" />
-    <Content Include="Images\button_span_bg.gif" />
-    <Content Include="Images\Class.png" />
-    <Content Include="Images\Method.png" />
-    <Content Include="Images\MSTestResultViewer.png" />
-    <Content Include="Images\Namespace.png" />
-    <Content Include="Images\Project.png" />
-    <Content Include="Images\StatusFailed.png" />
-    <Content Include="Images\StatusIngnored.png" />
-    <Content Include="Images\StatusPassed.png" />
-    <Content Include="Index.htm" />
-    <Content Include="Javascripts\grid.js" />
-    <Content Include="Javascripts\jquery.treeview.js" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.accordion.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.all.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.autocomplete.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.base.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.button.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.core.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.datepicker.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.dialog.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.progressbar.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.resizable.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.selectable.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.slider.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.tabs.css" />
-    <Content Include="Javascripts\jqueryThemes\base\jquery.ui.theme.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_2694e8_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_3d80b3_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_72a7cf_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery-ui-1.8.23.custom.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.accordion.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.all.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.autocomplete.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.base.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.button.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.core.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.datepicker.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.dialog.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.progressbar.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.resizable.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.selectable.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.slider.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.tabs.css" />
-    <Content Include="Javascripts\jqueryThemes\cupertino\jquery.ui.theme.css" />
-    <Content Include="Javascripts\jquery_002.js" />
-    <Content Include="Library\layout.jquery\jquery-latest.js" />
-    <Content Include="Library\layout.jquery\jquery-ui-latest.js" />
-    <Content Include="Library\layout.jquery\jquery.layout-latest.js" />
-    <Content Include="Library\layout.jquery\layout-default-latest.css" />
-    <Content Include="License.htm" />
-    <Content Include="RGraph\excanvas\excanvas.js" />
-    <Content Include="RGraph\libraries\RGraph.bar.js" />
-    <Content Include="RGraph\libraries\RGraph.common.core.js" />
-    <Content Include="RGraph\libraries\RGraph.common.dynamic.js" />
-    <Content Include="RGraph\libraries\RGraph.common.effects.js" />
-    <Content Include="RGraph\libraries\RGraph.common.key.js" />
-    <Content Include="RGraph\libraries\RGraph.common.tooltips.js" />
-    <Content Include="RGraph\libraries\RGraph.pie.js" />
-    <Content Include="Styles\contentpage.css" />
-    <Content Include="Styles\jquery.treeview.css" />
-    <Content Include="Styles\default.css" />
-    <Content Include="Styles\ui.jqgrid.css" />
-    <Content Include="Support.htm" />
-    <Content Include="Table.htm" />
-    <Content Include="TestcaseHierarchy.htm" />
+    <Content Include="web\Images\topq.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Pages\Chart.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\ActionLicense.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\datagrid_header_bg.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\MSTestResultViewer.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\MSTestResultViewerUninstaller.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\ActionChart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\ActionErrorWindow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\ActionHelp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\ActionPrint.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\ActionHierarchyWindow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\bg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\button_a_bg.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\button_plain_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\button_span_bg.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\Class.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\Method.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\MSTestResultViewer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\Namespace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\Project.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\StatusFailed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\StatusIngnored.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Images\StatusPassed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Pages\Index.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\grid.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jquery.treeview.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-bg_flat_0_aaaaaa_40x100.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-bg_flat_75_ffffff_40x100.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-bg_glass_55_fbf9ee_1x400.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-bg_glass_65_ffffff_1x400.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-bg_glass_75_dadada_1x400.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-bg_glass_75_e6e6e6_1x400.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-bg_glass_95_fef1ec_1x400.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-icons_222222_256x240.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-icons_2e83ff_256x240.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-icons_454545_256x240.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-icons_888888_256x240.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\images\ui-icons_cd0a0a_256x240.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.accordion.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.all.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.autocomplete.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.base.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.button.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.core.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.datepicker.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.dialog.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.progressbar.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.resizable.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.selectable.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.slider.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.tabs.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\base\jquery.ui.theme.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery-ui-1.8.23.custom.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.accordion.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.all.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.autocomplete.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.base.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.button.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.core.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.datepicker.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.dialog.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.progressbar.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.resizable.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.selectable.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.slider.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.tabs.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jqueryThemes\cupertino\jquery.ui.theme.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Javascripts\jquery_002.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Library\layout.jquery\jquery-latest.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Library\layout.jquery\jquery-ui-latest.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Library\layout.jquery\jquery.layout-latest.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Library\layout.jquery\layout-default-latest.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Pages\License.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\RGraph\excanvas\excanvas.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\RGraph\libraries\RGraph.bar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\RGraph\libraries\RGraph.common.core.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\RGraph\libraries\RGraph.common.dynamic.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\RGraph\libraries\RGraph.common.effects.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\RGraph\libraries\RGraph.common.key.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\RGraph\libraries\RGraph.common.tooltips.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\RGraph\libraries\RGraph.pie.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Styles\contentpage.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Styles\jquery.treeview.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Styles\default.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Styles\ui.jqgrid.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Pages\Support.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Pages\Table.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web\Pages\TestcaseHierarchy.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
+    <Folder Include="web\Data\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -222,7 +407,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="automation.trx" />
+    <None Include="automation.trx">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="automation.xsc">
       <DependentUpon>automation.xsd</DependentUpon>
     </None>
@@ -237,6 +424,12 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="Uninstall.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

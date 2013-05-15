@@ -1,0 +1,207 @@
+﻿html, body
+{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Verdana,helvetica,arial,sans-serif;
+    font-size: 12px;
+}
+#header table
+{
+    background: url("../Images/bg.png") repeat-x scroll 0 0 transparent; /*    background: #c4dcfb;*/ 
+    height: 56px;
+    border-bottom: 1px solid #9CBDFF;
+}
+#reportTitle
+{
+    font-size: 12px;
+    font-weight: bold;
+}
+#reportGenerated
+{
+    font-size: 12px;
+}
+#developedBy
+{
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+.TestCounter td
+{
+    border: 1px solid #DADADA;
+    border-radius: 5px;
+    font-size: 9px;
+    color: White;
+}
+
+/* TOOLBAR */
+/* http://www.jeasyui.com/demo/index.php */
+.layout-toolbar
+{
+    /*background: url("../Images/panel_title.png") repeat-x scroll 0 0 transparent;*/
+    background: none repeat scroll 0 0 #FAFAFA;
+    border-bottom: 1px solid #EEEEEE;
+    height: 26px;
+    padding: 1px 2px; /*border-top: 1px solid #9CBDFF;*/
+}
+.layout-toolbar-separator
+{
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #FFFFFF;
+    height: 24px;
+    margin: 0px 5px 0px 5px;
+}
+.datagrid-btn-separator
+{
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #FFFFFF;
+    float: left;
+    height: 24px;
+    margin: 2px 1px;
+}
+a.l-btn
+{
+    background: url("../Images/button_a_bg.gif") no-repeat scroll right top transparent;
+    color: #444444;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px;
+    height: 24px;
+    outline: medium none;
+    padding-right: 18px;
+    text-decoration: none;
+}
+a.l-btn-plain
+{
+    background: none repeat scroll 0 0 transparent;
+    border: 1px solid transparent;
+    padding-right: 5px;
+}
+a.l-btn-disabled
+{
+    color: #CCCCCC;
+    cursor: default;
+    opacity: 0.5;
+}
+a.l-btn span.l-btn-left
+{
+    background: url("../Images/button_span_bg.gif") no-repeat scroll left top transparent;
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    padding: 4px 0 4px 18px;
+}
+a.l-btn-plain span.l-btn-left
+{
+    background: none repeat scroll 0 0 transparent;
+    padding-left: 5px;
+}
+a.l-btn span span.l-btn-text
+{
+    display: inline-block;
+    height: 16px;
+    line-height: 16px; /*padding: 0;*/
+    padding: 0px 0px 0px 20px;
+}
+a.l-btn span span span.l-btn-empty
+{
+    display: inline-block;
+    padding: 0;
+    width: 16px;
+}
+a.l-btn:hover
+{
+    background-position: right bottom;
+    outline: medium none;
+}
+a.l-btn:hover span.l-btn-left
+{
+    background-position: left bottom;
+}
+a.l-btn-plain:hover
+{
+    background: url("../Images/button_plain_hover.png") repeat-x scroll left bottom transparent;
+    border: 1px solid #7EABCD;
+    border-radius: 3px 3px 3px 3px;
+}
+a.l-btn-disabled:hover
+{
+    background-position: right top;
+}
+a.l-btn-disabled:hover span.l-btn-left
+{
+    background-position: left top;
+}
+a.l-btn .l-btn-focus
+{
+    outline: thin dotted #0000FF;
+}
+.icon-table
+{
+    background: url("../Images/ActionTable.png") no-repeat scroll 0 0 transparent;
+}
+.icon-chart
+{
+    background: url("../Images/ActionChart.png") no-repeat scroll 0 0 transparent;
+}
+.icon-errorwindow
+{
+    background: url("../Images/ActionErrorWindow.png") no-repeat scroll 0 0 transparent;
+}
+.icon-refresh
+{
+    background: url("../Images/ActionRefresh.png") no-repeat scroll 0 0 transparent;
+}
+
+.icon-export
+{
+    background: url("../Images/ActionExport.png") no-repeat scroll 0 0 transparent;
+}
+.icon-print
+{
+    background: url("../Images/ActionPrint.png") no-repeat scroll 0 0 transparent;
+}
+.icon-information
+{
+    background: url("../Images/ActionLicense.png") no-repeat scroll 0 0 transparent;
+}
+.icon-donate
+{
+    background: url("../Images/ActionDonate.png") no-repeat scroll 0 0 transparent;
+}
+.icon-testhiearchywindow
+{
+    background: url("../Images/ActionHierarchyWindow.png") no-repeat scroll 0 0 transparent;
+}
+.icon-help
+{
+    background: url("../Images/ActionHelp.png") no-repeat scroll 0 0 transparent;
+}
+/**/
+
+
+
+.container
+{
+    border-width: 0;
+    overflow: hidden;
+    padding: 0;
+    display: none; /* hide panes until layout initializes */
+}
+
+/*** IMPORTANT - Layout container MUST have a 'height' or will be 'invisible' ***/
+.inner-layout-container
+{
+    height: 100%;
+}
+.inner-center .ui-layout-content
+{
+    /* IFRAME pane */
+    padding: 0;
+    margin: 0;
+}
+/* initially hidden */

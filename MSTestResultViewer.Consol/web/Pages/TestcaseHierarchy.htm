@@ -1,0 +1,24 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>Unit Test Case Hierarchy</title>
+    <script type="text/javascript" src="Data/TestHierarchy.js"></script>
+    <script type="text/javascript" src="Library/layout.jquery/jquery-latest.js"></script>
+    <script type="text/javascript" src="Javascripts/jquery.treeview.js"></script>
+    <link rel="stylesheet" type="text/css" href="Styles/jquery.treeview.css" />
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $("#ulTestHierarchy").html(treeData);
+            $("#ulTestHierarchy").treeview({
+                animated: "normal"
+            });
+        });
+    </script>
+   
+</head>
+<body>
+    <ul id="ulTestHierarchy" class="TestHierarchyTree">
+        
+    </ul>
+</body>
+</html>

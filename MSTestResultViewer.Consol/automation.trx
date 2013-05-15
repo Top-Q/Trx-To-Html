@@ -69,8 +69,24 @@ this Test should pass</StdOut>
     </UnitTestResult>
     <UnitTestResult executionId="7b5a0c8f-b4a1-4666-811e-9377beff861f" testId="f60d09c9-25ac-111d-c596-ef300e00981b" testName="UnitTestSample2" computerName="QAAUTOMATION-PC" duration="00:00:00.0380824" startTime="2013-05-05T11:22:07.1890820+03:00" endTime="2013-05-05T11:22:07.2290860+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7b5a0c8f-b4a1-4666-811e-9377beff861f">
       <Output>
-        <StdOut>this is Console out print2
-this Test should failed</StdOut>
+        <StdOut>
+          this is Console out print2 /n
+          this Test should failed /n
+          this Test should failed2/n
+          this Test should failed3
+          this Test should failed4
+          this Test should failed5
+          this Test should failed5this Test should failed5this Test should failed5this Test should failed5this Test should failed5this Test should failed5this Test should failed5this Test should failed5this Test should failed5this Test should failed5this Test should failed5this Test should failed5
+          this Test should failed5this Test should failed5this Test should failed5this Test should failed5this Test should failed5
+          this Test should failed5
+          this Test should failed5
+          this Test should failed5
+          this Test should failed5
+          this Test should failed5
+          this Test should failed5this Test should failed5
+          this Test should failed5
+          link="http://www.ynet.co.il",Title=ynet
+        </StdOut>
         <ErrorInfo>
           <Message>Assert.Fail failed. </Message>
           <StackTrace>   at TfsAutomationCore.Tests.Tests.UnitTest1.UnitTestSample2() in c:\dev\TFS\Tfs\trunk\TfsAutomationCore.Tests\Tests\UnitTest1.cs:line 26
