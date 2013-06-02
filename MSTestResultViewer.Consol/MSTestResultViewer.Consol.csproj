@@ -94,9 +94,12 @@
     <Compile Include="TestEnvironmentInfo.cs" />
     <Compile Include="TestProjects.cs" />
     <Compile Include="TestResultSummary.cs" />
+    <Compile Include="xsd\visionMapDataClass.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="automation.xml" />
+    <Content Include="automation.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="web\Images\topq.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

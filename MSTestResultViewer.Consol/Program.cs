@@ -11,6 +11,7 @@ using System.Xml.XPath;
 using System.Diagnostics;
 using System.Xml.Serialization;
 using System.Json;
+using MSTestResultViewer.Xsd;
 
 namespace MSTestResultViewer.Consol
 {
@@ -145,9 +146,55 @@ namespace MSTestResultViewer.Consol
 
         private static void parseXml(string trxFilePath)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(TestRun));
+            XmlSerializer serializer = new XmlSerializer(typeof (TestRun));
 
             FileStream stream = new FileStream(trxFilePath, FileMode.Open);
+
+
+            XmlDocument doc = new XmlDocument();
+            //doc.LoadXml(stream);
+
+
+
+            //string xmlVersion = "unknow";
+            //bool unitTestVersion = false;
+
+
+
+
+            //XmlElement element = doc.DocumentElement;
+
+            //XmlAttributeCollection attr_coll = element.Attributes;
+           
+            //for (int i = 0; i < attr_coll.Count; i++)
+            //{
+            //    string attr_name = attr_coll[i].Name;
+            //    if (attr_name.Equals("xmlns"))
+            //    {
+            //        xmlVersion = attr_coll[i].Value;
+            //        break;
+            //    }
+            //}
+
+            //var res =doc.DocumentElement["Results"];
+            //if (res["UnitTestResult"] != null)
+            //{
+            //    unitTestVersion = true;
+            //}
+
+
+            //if (xmlVersion.Contains("2010"))
+            //{
+            //    if(unitTestVersion)
+            //    {
+            //        testRun = (TestRun)serializer.Deserialize(stream);
+            //    }
+            //}
+            //else
+            //{
+               
+            //}
+
 
             testRun = (TestRun)serializer.Deserialize(stream);
 
@@ -190,13 +237,15 @@ namespace MSTestResultViewer.Consol
                 Console.ReadLine();
             }
 
-
+            
 
         }
         private static void SetTestEnvironmentInfo()
         {
             //TODO: add validation for size >0
             var codebase = testRun.TestDefinitions[0].TestMethod[0].codeBase;
+
+            
             var runUser = testRun.runUser;
             var trxfile = testRun.name;
             var cre = testRun.Times[0].creation;
@@ -293,17 +342,31 @@ namespace MSTestResultViewer.Consol
                 int end = temp.IndexOf(comma) - 1;
 
 
+                string category ="none";
+                if (unittest.TestCategory != null)
+                {
+                    category = unittest.TestCategory[0].TestCategory;
+                }
+                string allMsgs = "";
+                List<string> msgs = new List<string>();
+                foreach (var msg in testRes.Output[0].TextMessages)
+                {
+                    msgs.Add(msg.Value);
+                }
+
 
                 var tcm = new TestClassMethods
                 {
+                    Error = GetErrorInfo(unittest),
                     Name = unittest.name,
                     Id = unittest.id,
-                    Category = unittest.TestCategory[0].TestCategory,
+                    Category = category,
+
                     Duration = TimeSpan.Parse(testRes.duration).ToString(),
                     Status = testRes.outcome,
-                    Output = testRes.Output[0].StdOut,
-                    Type = testRes.testType,
-                    Error = GetErrorInfo(unittest)
+                    Output = msgs,
+                    Type = testRes.testType
+                    
                 };
 
 
@@ -327,7 +390,8 @@ namespace MSTestResultViewer.Consol
                 if (projects.Contains(projectName))
                 {
 
-                    var p = new TestProjects() { Name = projectName };
+                    var p = new TestProjects(){Name = projectName};
+
                     var projectFound = testProjects.Find(proj => proj.Name.Equals(p.Name));
                     var calssFound = projectFound.Classes.Find(clazz => clazz.Name.Equals(className));
 
@@ -376,9 +440,7 @@ namespace MSTestResultViewer.Consol
                         //}
 
                     }
-
-
-
+                    
                 }
                 else
                 {
@@ -597,7 +659,7 @@ namespace MSTestResultViewer.Consol
                     TableItemInfo root = new TableItemInfo(){id=counter,parent=0,level = "0",Name=_project.Name,Passed =_project.Passed,Failed =_project.Failed,Ignored = _project.Ignored,Percent = string.Format("{0:00.00}", percentPass),Progress =strPercent,Time =pTime,Message = "none",StackTrace = "none",LineNo = "none",isLeaf = false,expanded = true,loaded = true};
 
                     tableItems.Add(root);
-
+                    
                   
                     int projParent = counter;
 
@@ -799,10 +861,37 @@ namespace MSTestResultViewer.Consol
                 sb.Append("doc.find('#dvStackTrace').text($('#treegrid').getRowData(id)['StackTrace']);\n");
 
                 //set test log data
-                sb.Append("doc.find('#dvTestLog').text($('#treegrid').getRowData(id)['TestOutput']);\n");
+                //sb.Append("doc.find('#dvTestLog').text($('#treegrid').getRowData(id)['TestOutput']);\n");
 
+                sb.Append("var text= $('#treegrid').getRowData(id)['TestOutput'];\n");
+                sb.Append("var textLines = text.split(',');\n");
+                sb.Append("doc.find('#dvTestLog').empty();\n");
+                sb.Append("for(var index=0;index<textLines.length;index++){\n");
+                sb.Append("var lines= textLines[index].split('!');\n");
+                sb.Append("for(var i=0;i<lines.length;i++){\n");
+                sb.Append("var HTMLLine='';\n");
+                sb.Append("var line = lines[i];\n");
+                sb.Append("if(line.indexOf('#') != -1 ){\n");
+                sb.Append("var text= line.replace('#','').replace('#','');\n");
+                sb.Append("HTMLLine =HTMLLine.concat('<strong>',text,'</strong>');\n");
+                sb.Append("}else if (line.indexOf('$') != -1 ){\n");
+                  //do ref
+                sb.Append("var ref= line .substring(line .indexOf('Link=')+'Link='.length , line .indexOf(','));\n");
+                sb.Append("var title = line .substring(line .indexOf(',Title=') +',Title='.length ).replace('$','') \n");
+                sb.Append("HTMLLine ='<a href=';\n");
+                sb.Append("HTMLLine=  HTMLLine.concat(ref,'>',title,'</a>' );\n");
+                sb.Append("}else{\n");
+                sb.Append("HTMLLine ='<p>';\n");
+                sb.Append("HTMLLine=  HTMLLine.concat(line,'</p>' );\n");
+                sb.Append("}\n");
+                sb.Append("if(HTMLLine.length > 0){\n");
+                sb.Append("doc.find('#dvTestLog').append(HTMLLine);\n");
+                sb.Append("}\n"); 
+                sb.Append("}\n");
+                sb.Append("}\n");
                 
                 
+       
                 sb.Append("}\n");
 
                 sb.Append("function progressFormat(cellvalue, options, rowObject) {\n");
