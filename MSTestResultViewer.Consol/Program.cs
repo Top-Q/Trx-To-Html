@@ -349,10 +349,15 @@ namespace MSTestResultViewer.Consol
                 }
                 string allMsgs = "";
                 List<string> msgs = new List<string>();
-                foreach (var msg in testRes.Output[0].TextMessages)
+                if (testRes.Output[0] != null && testRes.Output[0].TextMessages != null)
                 {
-                    msgs.Add(msg.Value);
+                    foreach (var msg in testRes.Output[0].TextMessages)
+                    {
+                        msgs.Add(msg.Value);
+                    }
                 }
+                
+                
 
 
                 var tcm = new TestClassMethods
@@ -522,11 +527,15 @@ namespace MSTestResultViewer.Consol
             {
                 _error = new ErrorInfo();
                 string[] delimiters = new string[] { ":line " };
-               
-                _error.Message = result.Output[0].ErrorInfo[0].Message;
-                _error.StackTrace = result.Output[0].ErrorInfo[0].StackTrace.ToString(CultureInfo.InvariantCulture);
 
-               
+                if (result != null && result.Output[0] != null && result.Output[0].ErrorInfo !=null)
+                {
+                    _error.StackTrace = result.Output[0].ErrorInfo[0].StackTrace.ToString(CultureInfo.InvariantCulture);
+                    _error.Message = result.Output[0].ErrorInfo[0].Message;
+                    
+                    
+                }
+                
 
                 string strLineNo = "0";
                 try
