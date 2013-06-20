@@ -11,13 +11,14 @@ using System.Xml.XPath;
 using System.Diagnostics;
 using System.Xml.Serialization;
 using System.Json;
-using MSTestResultViewer.Xsd;
+
+using V2012;
 
 namespace MSTestResultViewer.Consol
 {
     class Program
     {
-        public static TestRun testRun;
+        public static V2012.TestRun testRun;
 
 
         #region "Variables"
@@ -146,12 +147,16 @@ namespace MSTestResultViewer.Consol
 
         private static void parseXml(string trxFilePath)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof (TestRun));
+            XmlSerializer serializer = new XmlSerializer(typeof(V2012.TestRun));
 
             FileStream stream = new FileStream(trxFilePath, FileMode.Open);
 
 
             XmlDocument doc = new XmlDocument();
+
+            testRun = (V2012.TestRun)serializer.Deserialize(stream);
+
+            stream.Close();
             //doc.LoadXml(stream);
 
 
@@ -196,9 +201,6 @@ namespace MSTestResultViewer.Consol
             //}
 
 
-            testRun = (TestRun)serializer.Deserialize(stream);
-
-            stream.Close();
         }
         #endregion
 
@@ -243,12 +245,13 @@ namespace MSTestResultViewer.Consol
         private static void SetTestEnvironmentInfo()
         {
             //TODO: add validation for size >0
-            var codebase = testRun.TestDefinitions[0].TestMethod[0].codeBase;
+            var codebase = testRun.TestDefinitions[0].TestMethod.codeBase;
 
             
             var runUser = testRun.runUser;
             var trxfile = testRun.name;
-            var cre = testRun.Times[0].creation;
+
+            var cre = testRun.Times.creation;
             var creationDate = Convert.ToDateTime(cre);
             int idxattherate = trxfile.IndexOf("@") + 1;
             int idxspace = trxfile.IndexOf(" ");
@@ -267,12 +270,12 @@ namespace MSTestResultViewer.Consol
         private static void SetTestResultSummary()
         {
             //TODO: check if there is size >0
-            var counter = testRun.ResultSummary[0].Counters[0];
+            var counter = testRun.ResultSummary.Counters;
 
 
-            var st = testRun.Times[0].start;
+            var st = testRun.Times.start;
             var startDate = Convert.ToDateTime(st);
-            var end = testRun.Times[0].finish;
+            var end = testRun.Times.finish;
             var endDate = Convert.ToDateTime(end);
             var durationTime = endDate - startDate;
             var time = durationTime.ToString();
@@ -289,9 +292,9 @@ namespace MSTestResultViewer.Consol
             };
         }
 
-        private static TestRunResultsUnitTestResult GetResultOfTest(TestRunTestDefinitionsUnitTest test)
+        private static TestRunUnitTestResult GetResultOfTest(TestRunUnitTest test)
         {
-            TestRunResultsUnitTestResult res = null;
+            TestRunUnitTestResult res = null;
             try
             {
                 if (null != test)
@@ -327,7 +330,7 @@ namespace MSTestResultViewer.Consol
             var comma = ", ";
             testProjects = new List<TestProjects>();
             var testDef = testRun.TestDefinitions;
-
+            
             foreach (var unittest in testDef)
             {
                 bool passed = false;
@@ -335,7 +338,7 @@ namespace MSTestResultViewer.Consol
                 bool ignore = false;
                 var testRes = GetResultOfTest(unittest);
 
-                var classFullDetails = unittest.TestMethod[0].className; //Should be only one TestMethod under UnitTest tag
+                var classFullDetails = unittest.TestMethod.className; //Should be only one TestMethod under UnitTest tag
                 int start = classFullDetails.IndexOf(comma);
                 var className = classFullDetails.Substring(0, start);
                 var temp = classFullDetails.Substring(start + 1);
@@ -345,15 +348,14 @@ namespace MSTestResultViewer.Consol
                 string category ="none";
                 if (unittest.TestCategory != null)
                 {
-                    category = unittest.TestCategory[0].TestCategory;
+                    category = unittest.TestCategory.TestCategoryItem.Value;
                 }
                 string allMsgs = "";
                 List<string> msgs = new List<string>();
-                foreach (var msg in testRes.Output[0].TextMessages)
+                foreach (var msg in testRes.Output.TextMessages)
                 {
-                    msgs.Add(msg.Value);
+                    msgs.Add(msg);
                 }
-
 
                 var tcm = new TestClassMethods
                 {
@@ -362,7 +364,7 @@ namespace MSTestResultViewer.Consol
                     Id = unittest.id,
                     Category = category,
 
-                    Duration = TimeSpan.Parse(testRes.duration).ToString(),
+                    Duration = testRes.duration.TimeOfDay.ToString() ,
                     Status = testRes.outcome,
                     Output = msgs,
                     Type = testRes.testType
@@ -412,9 +414,8 @@ namespace MSTestResultViewer.Consol
                             tc.Ignored++;
                         }
 
-                        tc.Duration += TimeSpan.Parse(testRes.duration);
-
-
+                        tc.Duration += TimeSpan.Parse(testRes.duration.ToString());
+                        
                         tc.Methods.Add(tcm);
                         projectFound.Classes.Add(tc);
                     }
@@ -432,7 +433,8 @@ namespace MSTestResultViewer.Consol
                         {
                             calssFound.Ignored++;
                         }
-                        calssFound.Duration += TimeSpan.Parse(testRes.duration);
+                        //TODO:FIX THE TIMEING
+                        calssFound.Duration += new TimeSpan(0, testRes.duration.Hour, testRes.duration.Minute, testRes.duration.Second, testRes.duration.Millisecond);
                         calssFound.Methods.Add(tcm);
                         //else
                         //{
@@ -461,11 +463,16 @@ namespace MSTestResultViewer.Consol
                     {
                         tc.Ignored++;
                     }
-                    tc.Duration += TimeSpan.Parse(testRes.duration);
+                   
+
+                    var d= testRes.duration.Add(tc.Duration);
+                    tc.Duration =  tc.Duration.Add(new TimeSpan(0, d.Hour, d.Minute, d.Second, d.Millisecond));
+
 
                     tc.Methods.Add(tcm);
                     testproject.Classes.Add(tc);
                     testProjects.Add(testproject);
+                    
 
                 }
 
@@ -496,8 +503,10 @@ namespace MSTestResultViewer.Consol
                             ignored++;
                             break;
                     }
-                    projectTotalDuration += TimeSpan.Parse(duration);
-
+                   
+                    projectTotalDuration =
+                        projectTotalDuration.Add(
+                            (new TimeSpan(0, duration.Hour, duration.Minute, duration.Second, duration.Millisecond)));
 
                 }
                 testP.Duration = projectTotalDuration.ToString();
@@ -511,8 +520,8 @@ namespace MSTestResultViewer.Consol
 
         
         }
-      
-        private static ErrorInfo GetErrorInfo(TestRunTestDefinitionsUnitTest test)
+
+        private static ErrorInfo GetErrorInfo(TestRunUnitTest test)
         {
 
             var result = GetResultOfTest(test);
@@ -522,11 +531,20 @@ namespace MSTestResultViewer.Consol
             {
                 _error = new ErrorInfo();
                 string[] delimiters = new string[] { ":line " };
-               
-                _error.Message = result.Output[0].ErrorInfo[0].Message;
-                _error.StackTrace = result.Output[0].ErrorInfo[0].StackTrace.ToString(CultureInfo.InvariantCulture);
 
                
+                if (result.Output.ErrorInfo == null)
+                {
+                    _error.Message = result.InnerResults.UnitTestResult.Output.ErrorInfo.Message;
+                    _error.StackTrace = result.InnerResults.UnitTestResult.Output.ErrorInfo.StackTrace.ToString(CultureInfo.InvariantCulture);
+               
+                }
+                else
+                {
+                    _error.Message = result.Output.ErrorInfo.Message;
+                    _error.StackTrace = result.Output.ErrorInfo.StackTrace.ToString(CultureInfo.InvariantCulture);
+
+                }
 
                 string strLineNo = "0";
                 try
@@ -556,6 +574,8 @@ namespace MSTestResultViewer.Consol
                     }
                 }
                 _error.LineNo = LineNo;
+
+           
                 //}
             }
             return _error;
@@ -655,7 +675,7 @@ namespace MSTestResultViewer.Consol
                     if (percentIgnore > 0) percentIgnore = percentIgnore / total;
                     string strPercent = string.Format("{0},{1},{2}", percentPass, percentFail, percentIgnore);
 
-                    var pTime =TimeSpan.Parse(_project.Duration).TotalMilliseconds;
+                    var pTime =TimeSpan.Parse(_project.Duration).ToString();
                     TableItemInfo root = new TableItemInfo(){id=counter,parent=0,level = "0",Name=_project.Name,Passed =_project.Passed,Failed =_project.Failed,Ignored = _project.Ignored,Percent = string.Format("{0:00.00}", percentPass),Progress =strPercent,Time =pTime,Message = "none",StackTrace = "none",LineNo = "none",isLeaf = false,expanded = true,loaded = true};
 
                     tableItems.Add(root);
@@ -687,7 +707,7 @@ namespace MSTestResultViewer.Consol
                             classname = tmp[0];
 
 
-                        var cTime = _class.Duration.TotalMilliseconds;
+                        var cTime = _class.Duration.ToString();
                         TableItemInfo classInfo = new TableItemInfo() 
                         {   id = counter,
                             parent = projParent, 
@@ -723,7 +743,8 @@ namespace MSTestResultViewer.Consol
                             percentPass = 0.0;
                             strPercent = "";
 
-                            methoChartDataValue += TimeSpan.Parse(_method.Duration).TotalMilliseconds + ",";
+                            
+                            methoChartDataValue +="'"+  TimeSpan.Parse(_method.Duration) +"'"+ ",";
                             methoChartDataText += "'" + _method.Name + "',";
 
                             switch (_method.Status)
@@ -758,7 +779,7 @@ namespace MSTestResultViewer.Consol
 
                             
 
-                            var mTime = _class.Duration.TotalMilliseconds;
+                            var mTime = _method.Duration.ToString(); 
                             TableItemInfo methodInfo = new TableItemInfo()
                             {
                                 id = counter,
@@ -784,12 +805,12 @@ namespace MSTestResultViewer.Consol
                         }
                     }
 
-                    classChartDataValue = "var classDataValue = [" + classChartDataValue + "];";
-                    classChartDataText = "var classDataText = [" + classChartDataText + "];";
+                    classChartDataValue = "var classDataValue = [" + classChartDataValue + "];\n";
+                    classChartDataText = "var classDataText = [" + classChartDataText + "];\n";
 
-                    methoChartDataValue = "var methoDataValue = [" + methoChartDataValue + "];";
-                    methoChartDataText = "var methoDataText = [" + methoChartDataText + "];";
-                    methoChartDataColor = "var methoDataColor = [" + methoChartDataColor + "];";
+                    methoChartDataValue = "var methoDataValue = [" + methoChartDataValue + "];\n";
+                    methoChartDataText = "var methoDataText = [" + methoChartDataText + "];\n";
+                    methoChartDataColor = "var methoDataColor = [" + methoChartDataColor + "];\n";
                 }
 
              

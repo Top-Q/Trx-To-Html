@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="a24de2e5-7e4f-49b6-a11e-39ba52becc65" name="qa_automation@QAAUTOMATION-PC 2013-06-05 14:57:39" runUser="VISIONMAP\qa_automation" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="0f111a87-7131-48ff-bf91-0fe25d07d632">
+    <Deployment userDeploymentRoot="C:\Job\workspace\run_CI_tests" useDefaultDeploymentRoot="false" runDeploymentRoot="qa_automation_QAAUTOMATION-PC 2013-06-05 14_57_39" />
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-06-05T14:57:39.9691035+03:00" queuing="2013-06-05T14:57:40.1811247+03:00" start="2013-06-05T14:57:40.2491315+03:00" finish="2013-06-05T14:58:00.9512015+03:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="6" executed="6" error="0" failed="6" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="QAAUTOMATION-PC" outcome="Error" timestamp="2013-06-05T14:58:00.9211985+03:00">
+        <Text>Assembly Cleanup method BaseTestCase.AssemblyCleanup failed. Error Message: System.InvalidOperationException: Cannot process request because the process (6556) has exited.. StackTrace:     at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.Process.GetProcessHandle(Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.Process.Kill()
+   at visionmapAutomation.ControlCenterAdaptor.Close() in c:\Job\workspace\run_CI_tests\ControlCenter\ControlCenterAdaptor.cs:line 81
+   at TfsAutomation.ListenerManager.TestListenerManagerImpl.Close() in c:\Job\workspace\run_CI_tests\TfsAutomation\ListenerManager\TestListenerManagerImpl.cs:line 77
+   at VisionmapAutomation.BaseTestCase.AssemblyCleanup() in c:\Job\workspace\run_CI_tests\VisionmapAutomation\Base\BaseTestCase.cs:line 29
+</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestSample" storage="c:\job\workspace\run_ci_tests\visionmapautomation\bin\debug\visionmapautomation.dll" id="19f1a224-f952-f869-4054-a757bf808f35">
+      <TestCategory>
+        <TestCategoryItem TestCategory="CI-Test" />
+      </TestCategory>
+      <Execution id="454d333d-96e3-4a3d-a769-1840c4fc33f1" />
+      <TestMethod codeBase="C:/Job/workspace/run_CI_tests/VisionmapAutomation/bin/Debug/VisionmapAutomation.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="VisionmapAutomation.VisionMapTest, VisionmapAutomation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestSample" />
+      <Extension>Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute, Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Extension>
+    </UnitTest>
+    <UnitTest name="BDOtest" storage="c:\job\workspace\run_ci_tests\visionmapautomation\bin\debug\visionmapautomation.dll" id="702869be-2a30-2e72-7ece-ddec0e907d31">
+      <TestCategory>
+        <TestCategoryItem TestCategory="CI-Test" />
+      </TestCategory>
+      <Execution id="460f7ec3-f59e-4ae3-987d-b73a990e1c27" />
+      <TestMethod codeBase="C:/Job/workspace/run_CI_tests/VisionmapAutomation/bin/Debug/VisionmapAutomation.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="VisionmapAutomation.VisionMapTest, VisionmapAutomation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="BDOtest" />
+      <Extension>Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute, Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Extension>
+    </UnitTest>
+    <UnitTest name="OrthoTest" storage="c:\job\workspace\run_ci_tests\visionmapautomation\bin\debug\visionmapautomation.dll" id="11e0895d-9b85-175e-c184-e6b9350958f2">
+      <TestCategory>
+        <TestCategoryItem TestCategory="CI-Test" />
+      </TestCategory>
+      <Execution id="8176bc35-fc8e-4f1a-83a3-52332f1c371d" />
+      <TestMethod codeBase="C:/Job/workspace/run_CI_tests/VisionmapAutomation/bin/Debug/VisionmapAutomation.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="VisionmapAutomation.VisionMapTest, VisionmapAutomation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="OrthoTest" />
+      <DataSource connectionString="Dsn=Excel Files;dbq=\\vmcl02s01\QA\Automation\QA.xlsx" providerInvariantName="System.Data.Odbc" tableName="Ortho$" />
+      <Extension>Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute, Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Extension>
+    </UnitTest>
+    <UnitTest name="BlockTest" storage="c:\job\workspace\run_ci_tests\visionmapautomation\bin\debug\visionmapautomation.dll" id="b8c7c3fe-7545-4b18-0f47-dd6f27b25dc4">
+      <TestCategory>
+        <TestCategoryItem TestCategory="CI-Test" />
+      </TestCategory>
+      <Execution id="744df913-6af4-4ba2-8a4f-0f019cca19ff" />
+      <TestMethod codeBase="C:/Job/workspace/run_CI_tests/VisionmapAutomation/bin/Debug/VisionmapAutomation.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="VisionmapAutomation.VisionMapTest, VisionmapAutomation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="BlockTest" />
+      <DataSource connectionString="Dsn=Excel Files;dbq=\\vmcl02s01\QA\Automation\QA.xlsx" providerInvariantName="System.Data.Odbc" tableName="Block$" />
+      <Extension>Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute, Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Extension>
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="702869be-2a30-2e72-7ece-ddec0e907d31" executionId="460f7ec3-f59e-4ae3-987d-b73a990e1c27" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8c7c3fe-7545-4b18-0f47-dd6f27b25dc4" executionId="744df913-6af4-4ba2-8a4f-0f019cca19ff" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="11e0895d-9b85-175e-c184-e6b9350958f2" executionId="8176bc35-fc8e-4f1a-83a3-52332f1c371d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="19f1a224-f952-f869-4054-a757bf808f35" executionId="454d333d-96e3-4a3d-a769-1840c4fc33f1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="460f7ec3-f59e-4ae3-987d-b73a990e1c27" testId="702869be-2a30-2e72-7ece-ddec0e907d31" testName="BDOtest" computerName="QAAUTOMATION-PC" duration="00:00:19.3504636" startTime="2013-06-05T14:57:40.2711337+03:00" endTime="2013-06-05T14:57:59.9270991+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="460f7ec3-f59e-4ae3-987d-b73a990e1c27">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method VisionmapAutomation.VisionMapTest.BDOtest threw exception: 
+System.ArgumentException: No search information has been specified. To search for a control, you must specify one or more search properties or filter properties.
+Parameter name: SearchProperties</Message>
+          <StackTrace>    at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.ValidateSearchProperties()
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.FindInternal()
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.&lt;Find&gt;b__d()
+   at Microsoft.VisualStudio.TestTools.UITesting.CodedUITestMethodInvoker.InvokeMethod[T](Func`1 function, UITestControl control, Boolean firePlaybackErrorEvent, Boolean logAsAction)
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.Find()
+   at Microsoft.VisualStudio.TestTools.UITesting.ApplicationUnderTest.Find()
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.EnsureValid(Boolean waitForReady, Boolean refetch)
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.FindFirstDescendant(String queryId, Int32 maxDepth, Int32&amp; timeLeft)
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.EnsureValid(Boolean waitForReady, Boolean refetch)
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.GetPropertyValuePrivate(String propertyName)
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.GetPropertyPrivate(String propertyName)
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.&lt;&gt;c__DisplayClass11.&lt;GetProperty&gt;b__10()
+   at Microsoft.VisualStudio.TestTools.UITesting.CodedUITestMethodInvoker.InvokeMethod[T](Func`1 function, UITestControl control, Boolean firePlaybackErrorEvent, Boolean logAsAction)
+   at Microsoft.VisualStudio.TestTools.UITesting.UITestControl.GetProperty(String propertyName)
+   at Microsoft.VisualStudio.TestTools.UITesting.WinControls.WinComboBox.get_SelectedItem()
+   at VisionmapAutomation.CreateJob.SetSession(String sessionName) in c:\Job\workspace\run_CI_tests\ControlCenter\Jobs\CreateJob.cs:line 35
+   at VisionmapAutomation.VisionMapTest.BDOtest() in c:\Job\workspace\run_CI_tests\VisionmapAutomation\VisionMapTest.cs:line 84
+</StackTrace>
+        </ErrorInfo>
+        <TextMessages>
+          <Message>14:57 PASSED In WebDriver adaptor init</Message>
+          <Message>14:57 PASSED New job name setted BDO_130605145743</Message>
+        </TextMessages>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="QAAUTOMATION-PC\BDOtest.png" />
+      </ResultFiles>
+      <ExtensionResult>Exception has been thrown by the target of an invocation.</ExtensionResult>
+    </UnitTestResult>
+    <UnitTestResult executionId="744df913-6af4-4ba2-8a4f-0f019cca19ff" testId="b8c7c3fe-7545-4b18-0f47-dd6f27b25dc4" testName="BlockTest" computerName="QAAUTOMATION-PC" duration="00:00:00.7266369" startTime="2013-06-05T14:57:59.9280992+03:00" endTime="2013-06-05T14:58:00.6601724+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="744df913-6af4-4ba2-8a4f-0f019cca19ff" resultType="DataDrivenTest">
+      <Output>
+        <TextMessages>
+          <Message>14:58 PASSED New GroupName param setted 343A</Message>
+          <Message>14:58 PASSED New sessionName param setted Automation_session</Message>
+          <Message>14:58 PASSED New PositionStream param setted Mini_2legs</Message>
+          <Message>14:58 PASSED New coordianteSystem param setted TWD97 / TM2 zone 121 Elip</Message>
+          <Message>14:58 PASSED New Jobtype param setted Block / DTM / Orthophoto</Message>
+        </TextMessages>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="QAAUTOMATION-PC\BlockTest_iteration1.png" />
+      </ResultFiles>
+      <Counters error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+      <InnerResults>
+        <UnitTestResult executionId="47914326-07b0-4667-91f0-d89c322fcc65" parentExecutionId="744df913-6af4-4ba2-8a4f-0f019cca19ff" testId="b8c7c3fe-7545-4b18-0f47-dd6f27b25dc4" testName="BlockTest" computerName="QAAUTOMATION-PC" duration="00:00:00.0647889" startTime="2013-06-05T14:58:00.4941558+03:00" endTime="2013-06-05T14:58:00.5601624+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="744df913-6af4-4ba2-8a4f-0f019cca19ff" dataRowInfo="0" resultType="DataDrivenDataRow">
+          <Output>
+            <ErrorInfo>
+              <Message>Test method VisionmapAutomation.VisionMapTest.BlockTest threw exception: 
+Microsoft.VisualStudio.TestTools.UITest.Extension.UITestControlNotAvailableException: The application process no longer exists.</Message>
+              <StackTrace>    at Microsoft.VisualStudio.TestTools.UITesting.ApplicationUnderTest.Find()
+   at visionmapAutomation.ControlCenter..ctor(BrowserWindow browser, String serverPath) in c:\Job\workspace\run_CI_tests\ControlCenter\ControlCenter.cs:line 34
+   at visionmapAutomation.ControlCenterAdaptor.GetControlCenter() in c:\Job\workspace\run_CI_tests\ControlCenter\ControlCenterAdaptor.cs:line 59
+   at VisionmapAutomation.VisionMapTest.BlockTest() in c:\Job\workspace\run_CI_tests\VisionmapAutomation\VisionMapTest.cs:line 134
+</StackTrace>
+            </ErrorInfo>
+          </Output>
+          <ExtensionResult>Exception has been thrown by the target of an invocation.</ExtensionResult>
+        </UnitTestResult>
+      </InnerResults>
+    </UnitTestResult>
+    <UnitTestResult executionId="8176bc35-fc8e-4f1a-83a3-52332f1c371d" testId="11e0895d-9b85-175e-c184-e6b9350958f2" testName="OrthoTest" computerName="QAAUTOMATION-PC" duration="00:00:00.1702888" startTime="2013-06-05T14:58:00.6611725+03:00" endTime="2013-06-05T14:58:00.8361900+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8176bc35-fc8e-4f1a-83a3-52332f1c371d" resultType="DataDrivenTest">
+      <Output>
+        <TextMessages>
+          <Message>14:58 PASSED New GroupName param setted 343A</Message>
+          <Message>14:58 PASSED New sessionName param setted Automation_session</Message>
+          <Message>14:58 PASSED New PositionStream param setted Mini_2legs</Message>
+          <Message>14:58 PASSED New coordianteSystem param setted TWD97 / TM2 zone 121 Elip</Message>
+          <Message>14:58 PASSED New Jobtype param setted Block / DTM / Orthophoto</Message>
+          <Message>14:58 PASSED New minFrameAngle param setted 0.54</Message>
+          <Message>14:58 PASSED New maxFrameAngle param setted 0.69</Message>
+        </TextMessages>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="QAAUTOMATION-PC\OrthoTest_iteration1.png" />
+      </ResultFiles>
+      <Counters error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+      <InnerResults>
+        <UnitTestResult executionId="41911742-a45e-4285-8f5d-39a2c29e6313" parentExecutionId="8176bc35-fc8e-4f1a-83a3-52332f1c371d" testId="11e0895d-9b85-175e-c184-e6b9350958f2" testName="OrthoTest" computerName="QAAUTOMATION-PC" duration="00:00:00.0518466" startTime="2013-06-05T14:58:00.7391803+03:00" endTime="2013-06-05T14:58:00.7911855+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8176bc35-fc8e-4f1a-83a3-52332f1c371d" dataRowInfo="0" resultType="DataDrivenDataRow">
+          <Output>
+            <ErrorInfo>
+              <Message>Test method VisionmapAutomation.VisionMapTest.OrthoTest threw exception: 
+System.ArgumentException: Column 'dtmStream ' does not belong to table Ortho$.</Message>
+              <StackTrace>    at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at VisionmapAutomation.VisionMapTest.GetParam(String dataRow) in c:\Job\workspace\run_CI_tests\VisionmapAutomation\VisionMapTest.cs:line 545
+   at VisionmapAutomation.VisionMapTest.OrthoTest() in c:\Job\workspace\run_CI_tests\VisionmapAutomation\VisionMapTest.cs:line 203
+</StackTrace>
+            </ErrorInfo>
+          </Output>
+          <ExtensionResult>Exception has been thrown by the target of an invocation.</ExtensionResult>
+        </UnitTestResult>
+      </InnerResults>
+    </UnitTestResult>
+    <UnitTestResult executionId="454d333d-96e3-4a3d-a769-1840c4fc33f1" testId="19f1a224-f952-f869-4054-a757bf808f35" testName="TestSample" computerName="QAAUTOMATION-PC" duration="00:00:00.0532022" startTime="2013-06-05T14:58:00.8371901+03:00" endTime="2013-06-05T14:58:00.8951959+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="454d333d-96e3-4a3d-a769-1840c4fc33f1">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method VisionmapAutomation.VisionMapTest.TestSample threw exception: 
+Microsoft.VisualStudio.TestTools.UITest.Extension.UITestControlNotAvailableException: The application process no longer exists.</Message>
+          <StackTrace>    at Microsoft.VisualStudio.TestTools.UITesting.ApplicationUnderTest.Find()
+   at visionmapAutomation.ControlCenterAdaptor.NavigateToUrl(String url) in c:\Job\workspace\run_CI_tests\ControlCenter\ControlCenterAdaptor.cs:line 89
+   at VisionmapAutomation.VisionMapTest.TestSample() in c:\Job\workspace\run_CI_tests\VisionmapAutomation\VisionMapTest.cs:line 55
+</StackTrace>
+        </ErrorInfo>
+        <TextMessages>
+          <Message>14:58 PASSED In Test Sample</Message>
+        </TextMessages>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="QAAUTOMATION-PC\TestSample.png" />
+      </ResultFiles>
+      <ExtensionResult>Exception has been thrown by the target of an invocation.</ExtensionResult>
+    </UnitTestResult>
+  </Results>
+</TestRun>

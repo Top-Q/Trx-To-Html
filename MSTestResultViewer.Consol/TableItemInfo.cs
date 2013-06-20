@@ -17,7 +17,7 @@ namespace MSTestResultViewer.Consol
         public int Ignored { get; set; }
         public string Percent { get; set; }
         public string Progress { get; set; }
-        public double Time { get; set; }
+        public String  Time { get; set; }
         public string Message { get; set; }
         public string StackTrace { get; set; }
         public string LineNo { get; set; }

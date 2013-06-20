@@ -70,16 +70,19 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="automation.cs">
+    <Compile Include="format\v1\automation.cs">
       <DependentUpon>automation.xsd</DependentUpon>
     </Compile>
-    <Compile Include="automation.Designer.cs">
+    <Compile Include="format\v1\automation.Designer.cs">
       <DependentUpon>automation.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Enums.cs" />
     <Compile Include="ErrorInfo.cs" />
+    <Compile Include="format\v2\2012_testCategory.cs">
+      <DependentUpon>2012_testCategory.xsd</DependentUpon>
+    </Compile>
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,7 +100,7 @@
     <Compile Include="xsd\visionMapDataClass.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="automation.xml">
+    <Content Include="format\v1\automation.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="web\Images\topq.jpg">
@@ -410,22 +413,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="automation.trx">
+    <None Include="format\v1\automation.trx">
       <SubType>Designer</SubType>
     </None>
-    <None Include="automation.xsc">
+    <None Include="format\v1\automation.xsc">
       <DependentUpon>automation.xsd</DependentUpon>
     </None>
-    <None Include="automation.xsd">
+    <None Include="format\v1\automation.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>automation.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="automation.xss">
+    <None Include="format\v1\automation.xss">
       <DependentUpon>automation.xsd</DependentUpon>
     </None>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
+    <None Include="format\v2\2012_testCategory.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="format\v2\automation2.trx" />
+    <Content Include="format\v2\automation2.xml" />
     <None Include="Uninstall.bat" />
   </ItemGroup>
   <ItemGroup>

@@ -103,7 +103,6 @@ C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\web\Pages\TestcaseHierarchy.htm
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\MSTestResultViewer.Consol.exe
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\MSTestResultViewer.Consol.pdb
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\System.Json.dll
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\System.ServiceModel.Web.dll
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\System.Json.xml
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\System.ServiceModel.Web.xml

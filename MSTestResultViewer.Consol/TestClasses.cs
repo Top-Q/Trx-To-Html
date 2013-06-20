@@ -11,7 +11,7 @@ namespace MSTestResultViewer.Consol
         public TestClasses()
         {
             Methods = new List<TestClassMethods>();
-            Duration = TimeSpan.Parse("00:00:00.00");
+            Duration = TimeSpan.Zero;
         }
 
         public string Name { get; set; }
