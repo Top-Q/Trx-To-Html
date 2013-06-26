@@ -352,10 +352,21 @@ namespace MSTestResultViewer.Consol
                 }
                 string allMsgs = "";
                 List<string> msgs = new List<string>();
+<<<<<<< HEAD
                 foreach (var msg in testRes.Output.TextMessages)
                 {
                     msgs.Add(msg);
+=======
+                if (testRes.Output[0] != null && testRes.Output[0].TextMessages != null)
+                {
+                    foreach (var msg in testRes.Output[0].TextMessages)
+                    {
+                        msgs.Add(msg.Value);
+                    }
+>>>>>>> 5c8379a0132d6abbed12b59a8da7cf66fa91fa1d
                 }
+                
+                
 
                 var tcm = new TestClassMethods
                 {
@@ -532,6 +543,7 @@ namespace MSTestResultViewer.Consol
                 _error = new ErrorInfo();
                 string[] delimiters = new string[] { ":line " };
 
+<<<<<<< HEAD
                
                 if (result.Output.ErrorInfo == null)
                 {
@@ -545,6 +557,16 @@ namespace MSTestResultViewer.Consol
                     _error.StackTrace = result.Output.ErrorInfo.StackTrace.ToString(CultureInfo.InvariantCulture);
 
                 }
+=======
+                if (result != null && result.Output[0] != null && result.Output[0].ErrorInfo !=null)
+                {
+                    _error.StackTrace = result.Output[0].ErrorInfo[0].StackTrace.ToString(CultureInfo.InvariantCulture);
+                    _error.Message = result.Output[0].ErrorInfo[0].Message;
+                    
+                    
+                }
+                
+>>>>>>> 5c8379a0132d6abbed12b59a8da7cf66fa91fa1d
 
                 string strLineNo = "0";
                 try
