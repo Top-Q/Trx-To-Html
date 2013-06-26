@@ -292,29 +292,76 @@ namespace MSTestResultViewer.Consol
             };
         }
 
-        private static TestRunUnitTestResult GetResultOfTest(TestRunUnitTest test)
+        private static TestRunResultsUnitTestResult GetResultOfTest(TestRunUnitTest test)
         {
-            TestRunUnitTestResult res = null;
+            TestRunResultsUnitTestResult res = null;
+            var id = test.id;
             try
             {
                 if (null != test)
                 {
-                    var id = test.id;
-                    foreach (var testRes in testRun.Results)
+                    
+                    if (testRun.Results.UnitTestResult != null)
                     {
-                        if (testRes.testId.Equals(id))
+                        foreach (var testRes in testRun.Results.UnitTestResult)
                         {
-                            res = testRes;
-                            break;
+                            if (testRes.testId.Equals(id))
+                            {
+                                res = testRes;
+                                break;
+                            }
                         }
                     }
-                }
+                    else
+                    {
+                        foreach (var testRes in testRun.Results.TestResultAggregation.InnerResults)
+                        {
+                            if (testRes.testId.Equals(id))
+                            {
+                                
+                               
+                                TestRunResultsUnitTestResultOutput output = new TestRunResultsUnitTestResultOutput();
+                                TestRunResultsUnitTestResultOutputErrorInfo error = new TestRunResultsUnitTestResultOutputErrorInfo();
+
+                                if (testRes.Output.ErrorInfo != null)
+                                {
+                                    error.Message = testRes.Output.ErrorInfo.Message;
+                                    error.StackTrace = testRes.Output.ErrorInfo.StackTrace;
+                                    output.ErrorInfo = error;
+                                }
+                              
+                                output.TextMessages = testRes.Output.TextMessages;
+
+                                res = new TestRunResultsUnitTestResult()
+                                {
+                                    outcome = testRes.outcome,
+                                    duration = testRes.duration,
+                                    startTime = testRes.startTime,
+                                    endTime = testRes.endTime,
+                                    testId = testRes.testId,
+                                    testName = testRes.testName,
+                                    testType = testRes.testType,
+                                    computerName = testRes.computerName,
+                                    executionId = testRes.executionId,
+                                    Output = output
+
+
+                                };
+                               
+                                break;
+                            }
+                        }
+
+
+                    }
+                                   }
 
 
             }
             catch (Exception e)
             {
-
+                Console.WriteLine("Couldn't find the test result - test id = "+test.id);
+                throw e;
             }
 
 
@@ -352,21 +399,22 @@ namespace MSTestResultViewer.Consol
                 }
                 string allMsgs = "";
                 List<string> msgs = new List<string>();
-<<<<<<< HEAD
-                foreach (var msg in testRes.Output.TextMessages)
+
+                if (testRes != null)
                 {
-                    msgs.Add(msg);
-=======
-                if (testRes.Output[0] != null && testRes.Output[0].TextMessages != null)
-                {
-                    foreach (var msg in testRes.Output[0].TextMessages)
+                    if (testRes.Output != null && testRes.Output.TextMessages!=null)
                     {
-                        msgs.Add(msg.Value);
+                        foreach (var msg in testRes.Output.TextMessages)
+                        {
+                            msgs.Add(msg);
+
+                        }    
+
                     }
->>>>>>> 5c8379a0132d6abbed12b59a8da7cf66fa91fa1d
+                    
+
                 }
-                
-                
+                    
 
                 var tcm = new TestClassMethods
                 {
@@ -497,29 +545,60 @@ namespace MSTestResultViewer.Consol
                 Int32 ignored = 0;
                 TimeSpan projectTotalDuration = TimeSpan.Parse("00:00:00.00");
 
-                foreach (var testReuslt in testRun.Results)
+                if (testRun.Results.UnitTestResult != null)
                 {
-                    var duration = testReuslt.duration;
-                    var testOutcome = testReuslt.outcome;
-
-                    switch (testOutcome.ToUpper())
+                    foreach (var testReuslt in testRun.Results.UnitTestResult)
                     {
-                        case "PASSED":
-                            passed++;
-                            break;
-                        case "FAILED":
-                            failed++;
-                            break;
-                        default:
-                            ignored++;
-                            break;
+                        var duration = testReuslt.duration;
+                        var testOutcome = testReuslt.outcome;
+
+                        switch (testOutcome.ToUpper())
+                        {
+                            case "PASSED":
+                                passed++;
+                                break;
+                            case "FAILED":
+                                failed++;
+                                break;
+                            default:
+                                ignored++;
+                                break;
+                        }
+
+                        projectTotalDuration =
+                            projectTotalDuration.Add(
+                                (new TimeSpan(0, duration.Hour, duration.Minute, duration.Second, duration.Millisecond)));
+
                     }
-                   
-                    projectTotalDuration =
-                        projectTotalDuration.Add(
-                            (new TimeSpan(0, duration.Hour, duration.Minute, duration.Second, duration.Millisecond)));
+                }
+                else
+                {
+                    foreach (var testReuslt in testRun.Results.TestResultAggregation.InnerResults)
+                    {
+                        var duration = testReuslt.duration;
+                        var testOutcome = testReuslt.outcome;
+
+                        switch (testOutcome.ToUpper())
+                        {
+                            case "PASSED":
+                                passed++;
+                                break;
+                            case "FAILED":
+                                failed++;
+                                break;
+                            default:
+                                ignored++;
+                                break;
+                        }
+
+                        projectTotalDuration =
+                            projectTotalDuration.Add(
+                                (new TimeSpan(0, duration.Hour, duration.Minute, duration.Second, duration.Millisecond)));
+                    }
+
 
                 }
+            
                 testP.Duration = projectTotalDuration.ToString();
                 testP.Passed = passed;
                 testP.Failed = failed;
@@ -543,7 +622,7 @@ namespace MSTestResultViewer.Consol
                 _error = new ErrorInfo();
                 string[] delimiters = new string[] { ":line " };
 
-<<<<<<< HEAD
+
                
                 if (result.Output.ErrorInfo == null)
                 {
@@ -557,16 +636,9 @@ namespace MSTestResultViewer.Consol
                     _error.StackTrace = result.Output.ErrorInfo.StackTrace.ToString(CultureInfo.InvariantCulture);
 
                 }
-=======
-                if (result != null && result.Output[0] != null && result.Output[0].ErrorInfo !=null)
-                {
-                    _error.StackTrace = result.Output[0].ErrorInfo[0].StackTrace.ToString(CultureInfo.InvariantCulture);
-                    _error.Message = result.Output[0].ErrorInfo[0].Message;
-                    
-                    
-                }
+
                 
->>>>>>> 5c8379a0132d6abbed12b59a8da7cf66fa91fa1d
+
 
                 string strLineNo = "0";
                 try

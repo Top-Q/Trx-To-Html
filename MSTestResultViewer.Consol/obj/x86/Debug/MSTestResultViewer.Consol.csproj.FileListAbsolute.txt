@@ -106,15 +106,6 @@ C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\System.ServiceModel.Web.dll
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\System.Json.xml
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\System.ServiceModel.Web.xml
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\de\System.Json.resources.dll
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\es\System.Json.resources.dll
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\fr\System.Json.resources.dll
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\it\System.Json.resources.dll
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\ja\System.Json.resources.dll
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\ko\System.Json.resources.dll
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\ru\System.Json.resources.dll
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\zh-Hans\System.Json.resources.dll
-C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\bin\Debug\zh-Hant\System.Json.resources.dll
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.exe
 C:\Users\liel_r\Documents\GitHub\Trx-To-Html\MSTestResultViewer.Consol\obj\x86\Debug\MSTestResultViewer.Consol.pdb
 C:\dev\MSTestResultViewer\MSTestResultViewer.Consol\bin\Debug\MSTestResultViewer.Consol.exe.config

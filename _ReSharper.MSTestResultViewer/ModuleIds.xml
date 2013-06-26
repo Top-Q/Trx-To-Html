@@ -1,4 +1,4 @@
 <Modules>
-  <Module PersistentId="3C0D78D0-3D4B-4B18-85B1-54D86287D572" ModuleId="MSTestResultViewer.Consol" />
   <Module PersistentId="8DCF95E5-0FEE-4CDC-9098-600A9A8FE6BC" ModuleId="ImageCompareTest" />
+  <Module PersistentId="3C0D78D0-3D4B-4B18-85B1-54D86287D572" ModuleId="MSTestResultViewer.Consol" />
 </Modules>
