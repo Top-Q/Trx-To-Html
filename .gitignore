@@ -1,4 +1,6 @@
 _ReSharper.*/*
+_ReSharper*/
+*.resharper
 target/
 bin/
 obj/
