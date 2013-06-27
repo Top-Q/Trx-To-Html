@@ -334,7 +334,7 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:element name="Output">
-                                  <xs:complexType>
+                                  <xs:complexType mixed="true">
                                     <xs:sequence>
                                       <xs:element name="ErrorInfo" minOccurs="0">
                                         <xs:complexType>
@@ -344,7 +344,7 @@
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
-                                      <xs:element name="TextMessages">
+                                      <xs:element name="TextMessages" minOccurs="0">
                                         <xs:complexType>
                                           <xs:sequence>
                                             <xs:element type="xs:string" name="Message" maxOccurs="unbounded" minOccurs="0"/>
@@ -361,7 +361,7 @@
                                         <xs:complexType>
                                           <xs:simpleContent>
                                             <xs:extension base="xs:string">
-                                              <xs:attribute type="xs:string" name="path"/>
+                                              <xs:attribute type="xs:string" name="path" use="optional"/>
                                             </xs:extension>
                                           </xs:simpleContent>
                                         </xs:complexType>
@@ -370,6 +370,69 @@
                                   </xs:complexType>
                                 </xs:element>
                                 <xs:element type="xs:string" name="ExtensionResult" minOccurs="0"/>
+                                <xs:element name="Counters" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:byte" name="error" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="failed" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="timeout" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="aborted" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="inconclusive" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="passedButRunAborted" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="notRunnable" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="notExecuted" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="disconnected" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="warning" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="passed" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="completed" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="inProgress" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="pending" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="InnerResults" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="UnitTestResult">
+                                        <xs:complexType mixed="true">
+                                          <xs:sequence>
+                                            <xs:element name="Output" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="ErrorInfo">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="Message"/>
+                                                        <xs:element type="xs:string" name="StackTrace"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:string" name="ExtensionResult" minOccurs="0"/>
+                                          </xs:sequence>
+                                          <xs:attribute type="xs:string" name="executionId" use="optional"/>
+                                          <xs:attribute type="xs:string" name="parentExecutionId" use="optional"/>
+                                          <xs:attribute type="xs:string" name="testId" use="optional"/>
+                                          <xs:attribute type="xs:string" name="testName" use="optional"/>
+                                          <xs:attribute type="xs:string" name="computerName" use="optional"/>
+                                          <xs:attribute type="xs:time" name="duration" use="optional"/>
+                                          <xs:attribute type="xs:dateTime" name="startTime" use="optional"/>
+                                          <xs:attribute type="xs:dateTime" name="endTime" use="optional"/>
+                                          <xs:attribute type="xs:string" name="testType" use="optional"/>
+                                          <xs:attribute type="xs:string" name="outcome" use="optional"/>
+                                          <xs:attribute type="xs:string" name="testListId" use="optional"/>
+                                          <xs:attribute type="xs:string" name="relativeResultsDirectory" use="optional"/>
+                                          <xs:attribute type="xs:byte" name="dataRowInfo" use="optional"/>
+                                          <xs:attribute type="xs:string" name="resultType" use="optional"/>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
                               </xs:sequence>
                               <xs:attribute type="xs:string" name="executionId" use="optional"/>
                               <xs:attribute type="xs:string" name="parentExecutionId" use="optional"/>
@@ -383,25 +446,9 @@
                               <xs:attribute type="xs:string" name="outcome" use="optional"/>
                               <xs:attribute type="xs:string" name="testListId" use="optional"/>
                               <xs:attribute type="xs:string" name="relativeResultsDirectory" use="optional"/>
+                              <xs:attribute type="xs:string" name="resultType" use="optional"/>
                             </xs:complexType>
                           </xs:element>
-                        </xs:sequence>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                  <xs:attribute type="xs:string" name="executionId"/>
-                  <xs:attribute type="xs:string" name="testId"/>
-                  <xs:attribute type="xs:string" name="testName"/>
-                  <xs:attribute type="xs:string" name="computerName"/>
-                  <xs:attribute type="xs:time" name="duration"/>
-                  <xs:attribute type="xs:dateTime" name="startTime"/>
-                  <xs:attribute type="xs:dateTime" name="endTime"/>
-                  <xs:attribute type="xs:string" name="testType"/>
-                  <xs:attribute type="xs:string" name="outcome"/>
-                  <xs:attribute type="xs:string" name="testListId"/>
-                  <xs:attribute type="xs:string" name="relativeResultsDirectory"/>
-                </xs:complexType>
-              </xs:element>
 
             </xs:sequence>
           </xs:complexType>

@@ -2559,16 +2559,557 @@ namespace V2012
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true,
-        Namespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010")]
-    public partial class TestRunResultsTestResultAggregationUnitTestResult
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010")]
+    public partial class TestRunResultsTestResultAggregationUnitTestResultCounters
     {
 
-        private TestRunResultsTestResultAggregationUnitTestResultOutput outputField;
+        private sbyte errorField;
 
-        private TestRunResultsTestResultAggregationUnitTestResultResultFiles resultFilesField;
+        private bool errorFieldSpecified;
+
+        private sbyte failedField;
+
+        private bool failedFieldSpecified;
+
+        private sbyte timeoutField;
+
+        private bool timeoutFieldSpecified;
+
+        private sbyte abortedField;
+
+        private bool abortedFieldSpecified;
+
+        private sbyte inconclusiveField;
+
+        private bool inconclusiveFieldSpecified;
+
+        private sbyte passedButRunAbortedField;
+
+        private bool passedButRunAbortedFieldSpecified;
+
+        private sbyte notRunnableField;
+
+        private bool notRunnableFieldSpecified;
+
+        private sbyte notExecutedField;
+
+        private bool notExecutedFieldSpecified;
+
+        private sbyte disconnectedField;
+
+        private bool disconnectedFieldSpecified;
+
+        private sbyte warningField;
+
+        private bool warningFieldSpecified;
+
+        private sbyte passedField;
+
+        private bool passedFieldSpecified;
+
+        private sbyte completedField;
+
+        private bool completedFieldSpecified;
+
+        private sbyte inProgressField;
+
+        private bool inProgressFieldSpecified;
+
+        private sbyte pendingField;
+
+        private bool pendingFieldSpecified;
+
+        private string valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte error
+        {
+            get
+            {
+                return this.errorField;
+            }
+            set
+            {
+                this.errorField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool errorSpecified
+        {
+            get
+            {
+                return this.errorFieldSpecified;
+            }
+            set
+            {
+                this.errorFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte failed
+        {
+            get
+            {
+                return this.failedField;
+            }
+            set
+            {
+                this.failedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool failedSpecified
+        {
+            get
+            {
+                return this.failedFieldSpecified;
+            }
+            set
+            {
+                this.failedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte timeout
+        {
+            get
+            {
+                return this.timeoutField;
+            }
+            set
+            {
+                this.timeoutField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool timeoutSpecified
+        {
+            get
+            {
+                return this.timeoutFieldSpecified;
+            }
+            set
+            {
+                this.timeoutFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte aborted
+        {
+            get
+            {
+                return this.abortedField;
+            }
+            set
+            {
+                this.abortedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool abortedSpecified
+        {
+            get
+            {
+                return this.abortedFieldSpecified;
+            }
+            set
+            {
+                this.abortedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte inconclusive
+        {
+            get
+            {
+                return this.inconclusiveField;
+            }
+            set
+            {
+                this.inconclusiveField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool inconclusiveSpecified
+        {
+            get
+            {
+                return this.inconclusiveFieldSpecified;
+            }
+            set
+            {
+                this.inconclusiveFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte passedButRunAborted
+        {
+            get
+            {
+                return this.passedButRunAbortedField;
+            }
+            set
+            {
+                this.passedButRunAbortedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool passedButRunAbortedSpecified
+        {
+            get
+            {
+                return this.passedButRunAbortedFieldSpecified;
+            }
+            set
+            {
+                this.passedButRunAbortedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte notRunnable
+        {
+            get
+            {
+                return this.notRunnableField;
+            }
+            set
+            {
+                this.notRunnableField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool notRunnableSpecified
+        {
+            get
+            {
+                return this.notRunnableFieldSpecified;
+            }
+            set
+            {
+                this.notRunnableFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte notExecuted
+        {
+            get
+            {
+                return this.notExecutedField;
+            }
+            set
+            {
+                this.notExecutedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool notExecutedSpecified
+        {
+            get
+            {
+                return this.notExecutedFieldSpecified;
+            }
+            set
+            {
+                this.notExecutedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte disconnected
+        {
+            get
+            {
+                return this.disconnectedField;
+            }
+            set
+            {
+                this.disconnectedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool disconnectedSpecified
+        {
+            get
+            {
+                return this.disconnectedFieldSpecified;
+            }
+            set
+            {
+                this.disconnectedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte warning
+        {
+            get
+            {
+                return this.warningField;
+            }
+            set
+            {
+                this.warningField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool warningSpecified
+        {
+            get
+            {
+                return this.warningFieldSpecified;
+            }
+            set
+            {
+                this.warningFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte passed
+        {
+            get
+            {
+                return this.passedField;
+            }
+            set
+            {
+                this.passedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool passedSpecified
+        {
+            get
+            {
+                return this.passedFieldSpecified;
+            }
+            set
+            {
+                this.passedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte completed
+        {
+            get
+            {
+                return this.completedField;
+            }
+            set
+            {
+                this.completedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool completedSpecified
+        {
+            get
+            {
+                return this.completedFieldSpecified;
+            }
+            set
+            {
+                this.completedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte inProgress
+        {
+            get
+            {
+                return this.inProgressField;
+            }
+            set
+            {
+                this.inProgressField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool inProgressSpecified
+        {
+            get
+            {
+                return this.inProgressFieldSpecified;
+            }
+            set
+            {
+                this.inProgressFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte pending
+        {
+            get
+            {
+                return this.pendingField;
+            }
+            set
+            {
+                this.pendingField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool pendingSpecified
+        {
+            get
+            {
+                return this.pendingFieldSpecified;
+            }
+            set
+            {
+                this.pendingFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
+
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010")]
+    public partial class TestRunResultsTestResultAggregationUnitTestResultInnerResultsUnitTestResultOutputErrorInfo
+    {
+
+        private string messageField;
+
+        private string stackTraceField;
+
+        /// <remarks/>
+        public string Message
+        {
+            get
+            {
+                return this.messageField;
+            }
+            set
+            {
+                this.messageField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string StackTrace
+        {
+            get
+            {
+                return this.stackTraceField;
+            }
+            set
+            {
+                this.stackTraceField = value;
+            }
+        }
+    }
+
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010")]
+    public partial class TestRunResultsTestResultAggregationUnitTestResultInnerResultsUnitTestResultOutput
+    {
+
+        private TestRunResultsTestResultAggregationUnitTestResultInnerResultsUnitTestResultOutputErrorInfo errorInfoField;
+
+        /// <remarks/>
+        public TestRunResultsTestResultAggregationUnitTestResultInnerResultsUnitTestResultOutputErrorInfo ErrorInfo
+        {
+            get
+            {
+                return this.errorInfoField;
+            }
+            set
+            {
+                this.errorInfoField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010")]
+    public partial class TestRunResultsTestResultAggregationUnitTestResultInnerResultsUnitTestResult
+    {
+
+        private TestRunResultsTestResultAggregationUnitTestResultInnerResultsUnitTestResultOutput outputField;
 
         private string extensionResultField;
+
+        private string[] textField;
 
         private string executionIdField;
 
@@ -2600,147 +3141,674 @@ namespace V2012
 
         private string relativeResultsDirectoryField;
 
-        /// <remarks/>
-        public TestRunResultsTestResultAggregationUnitTestResultOutput Output
-        {
-            get { return this.outputField; }
-            set { this.outputField = value; }
-        }
+        private sbyte dataRowInfoField;
+
+        private bool dataRowInfoFieldSpecified;
+
+        private string resultTypeField;
 
         /// <remarks/>
-        public TestRunResultsTestResultAggregationUnitTestResultResultFiles ResultFiles
+        public TestRunResultsTestResultAggregationUnitTestResultInnerResultsUnitTestResultOutput Output
         {
-            get { return this.resultFilesField; }
-            set { this.resultFilesField = value; }
+            get
+            {
+                return this.outputField;
+            }
+            set
+            {
+                this.outputField = value;
+            }
         }
 
         /// <remarks/>
         public string ExtensionResult
         {
-            get { return this.extensionResultField; }
-            set { this.extensionResultField = value; }
+            get
+            {
+                return this.extensionResultField;
+            }
+            set
+            {
+                this.extensionResultField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text
+        {
+            get
+            {
+                return this.textField;
+            }
+            set
+            {
+                this.textField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string executionId
         {
-            get { return this.executionIdField; }
-            set { this.executionIdField = value; }
+            get
+            {
+                return this.executionIdField;
+            }
+            set
+            {
+                this.executionIdField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string parentExecutionId
         {
-            get { return this.parentExecutionIdField; }
-            set { this.parentExecutionIdField = value; }
+            get
+            {
+                return this.parentExecutionIdField;
+            }
+            set
+            {
+                this.parentExecutionIdField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string testId
         {
-            get { return this.testIdField; }
-            set { this.testIdField = value; }
+            get
+            {
+                return this.testIdField;
+            }
+            set
+            {
+                this.testIdField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string testName
         {
-            get { return this.testNameField; }
-            set { this.testNameField = value; }
+            get
+            {
+                return this.testNameField;
+            }
+            set
+            {
+                this.testNameField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string computerName
         {
-            get { return this.computerNameField; }
-            set { this.computerNameField = value; }
+            get
+            {
+                return this.computerNameField;
+            }
+            set
+            {
+                this.computerNameField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(DataType = "time")]
         public System.DateTime duration
         {
-            get { return this.durationField; }
-            set { this.durationField = value; }
+            get
+            {
+                return this.durationField;
+            }
+            set
+            {
+                this.durationField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool durationSpecified
         {
-            get { return this.durationFieldSpecified; }
-            set { this.durationFieldSpecified = value; }
+            get
+            {
+                return this.durationFieldSpecified;
+            }
+            set
+            {
+                this.durationFieldSpecified = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public System.DateTime startTime
         {
-            get { return this.startTimeField; }
-            set { this.startTimeField = value; }
+            get
+            {
+                return this.startTimeField;
+            }
+            set
+            {
+                this.startTimeField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool startTimeSpecified
         {
-            get { return this.startTimeFieldSpecified; }
-            set { this.startTimeFieldSpecified = value; }
+            get
+            {
+                return this.startTimeFieldSpecified;
+            }
+            set
+            {
+                this.startTimeFieldSpecified = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public System.DateTime endTime
         {
-            get { return this.endTimeField; }
-            set { this.endTimeField = value; }
+            get
+            {
+                return this.endTimeField;
+            }
+            set
+            {
+                this.endTimeField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool endTimeSpecified
         {
-            get { return this.endTimeFieldSpecified; }
-            set { this.endTimeFieldSpecified = value; }
+            get
+            {
+                return this.endTimeFieldSpecified;
+            }
+            set
+            {
+                this.endTimeFieldSpecified = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string testType
         {
-            get { return this.testTypeField; }
-            set { this.testTypeField = value; }
+            get
+            {
+                return this.testTypeField;
+            }
+            set
+            {
+                this.testTypeField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string outcome
         {
-            get { return this.outcomeField; }
-            set { this.outcomeField = value; }
+            get
+            {
+                return this.outcomeField;
+            }
+            set
+            {
+                this.outcomeField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string testListId
         {
-            get { return this.testListIdField; }
-            set { this.testListIdField = value; }
+            get
+            {
+                return this.testListIdField;
+            }
+            set
+            {
+                this.testListIdField = value;
+            }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string relativeResultsDirectory
         {
-            get { return this.relativeResultsDirectoryField; }
-            set { this.relativeResultsDirectoryField = value; }
+            get
+            {
+                return this.relativeResultsDirectoryField;
+            }
+            set
+            {
+                this.relativeResultsDirectoryField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte dataRowInfo
+        {
+            get
+            {
+                return this.dataRowInfoField;
+            }
+            set
+            {
+                this.dataRowInfoField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool dataRowInfoSpecified
+        {
+            get
+            {
+                return this.dataRowInfoFieldSpecified;
+            }
+            set
+            {
+                this.dataRowInfoFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string resultType
+        {
+            get
+            {
+                return this.resultTypeField;
+            }
+            set
+            {
+                this.resultTypeField = value;
+            }
         }
     }
+
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010")]
+    public partial class TestRunResultsTestResultAggregationUnitTestResultInnerResults
+    {
+
+        private TestRunResultsTestResultAggregationUnitTestResultInnerResultsUnitTestResult unitTestResultField;
+
+        /// <remarks/>
+        public TestRunResultsTestResultAggregationUnitTestResultInnerResultsUnitTestResult UnitTestResult
+        {
+            get
+            {
+                return this.unitTestResultField;
+            }
+            set
+            {
+                this.unitTestResultField = value;
+            }
+        }
+    }
+
+
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010")]
+    public partial class TestRunResultsTestResultAggregationUnitTestResult
+    {
+
+        private TestRunResultsTestResultAggregationUnitTestResultOutput outputField;
+
+        private TestRunResultsTestResultAggregationUnitTestResultResultFiles resultFilesField;
+
+        private string extensionResultField;
+
+        private TestRunResultsTestResultAggregationUnitTestResultCounters countersField;
+
+        private TestRunResultsTestResultAggregationUnitTestResultInnerResults innerResultsField;
+
+        private string executionIdField;
+
+        private string parentExecutionIdField;
+
+        private string testIdField;
+
+        private string testNameField;
+
+        private string computerNameField;
+
+        private System.DateTime durationField;
+
+        private bool durationFieldSpecified;
+
+        private System.DateTime startTimeField;
+
+        private bool startTimeFieldSpecified;
+
+        private System.DateTime endTimeField;
+
+        private bool endTimeFieldSpecified;
+
+        private string testTypeField;
+
+        private string outcomeField;
+
+        private string testListIdField;
+
+        private string relativeResultsDirectoryField;
+
+        private string resultTypeField;
+
+        /// <remarks/>
+        public TestRunResultsTestResultAggregationUnitTestResultOutput Output
+        {
+            get
+            {
+                return this.outputField;
+            }
+            set
+            {
+                this.outputField = value;
+            }
+        }
+
+        /// <remarks/>
+        public TestRunResultsTestResultAggregationUnitTestResultResultFiles ResultFiles
+        {
+            get
+            {
+                return this.resultFilesField;
+            }
+            set
+            {
+                this.resultFilesField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ExtensionResult
+        {
+            get
+            {
+                return this.extensionResultField;
+            }
+            set
+            {
+                this.extensionResultField = value;
+            }
+        }
+
+        /// <remarks/>
+        public TestRunResultsTestResultAggregationUnitTestResultCounters Counters
+        {
+            get
+            {
+                return this.countersField;
+            }
+            set
+            {
+                this.countersField = value;
+            }
+        }
+
+        /// <remarks/>
+        public TestRunResultsTestResultAggregationUnitTestResultInnerResults InnerResults
+        {
+            get
+            {
+                return this.innerResultsField;
+            }
+            set
+            {
+                this.innerResultsField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string executionId
+        {
+            get
+            {
+                return this.executionIdField;
+            }
+            set
+            {
+                this.executionIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string parentExecutionId
+        {
+            get
+            {
+                return this.parentExecutionIdField;
+            }
+            set
+            {
+                this.parentExecutionIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string testId
+        {
+            get
+            {
+                return this.testIdField;
+            }
+            set
+            {
+                this.testIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string testName
+        {
+            get
+            {
+                return this.testNameField;
+            }
+            set
+            {
+                this.testNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string computerName
+        {
+            get
+            {
+                return this.computerNameField;
+            }
+            set
+            {
+                this.computerNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "time")]
+        public System.DateTime duration
+        {
+            get
+            {
+                return this.durationField;
+            }
+            set
+            {
+                this.durationField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool durationSpecified
+        {
+            get
+            {
+                return this.durationFieldSpecified;
+            }
+            set
+            {
+                this.durationFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public System.DateTime startTime
+        {
+            get
+            {
+                return this.startTimeField;
+            }
+            set
+            {
+                this.startTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool startTimeSpecified
+        {
+            get
+            {
+                return this.startTimeFieldSpecified;
+            }
+            set
+            {
+                this.startTimeFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public System.DateTime endTime
+        {
+            get
+            {
+                return this.endTimeField;
+            }
+            set
+            {
+                this.endTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool endTimeSpecified
+        {
+            get
+            {
+                return this.endTimeFieldSpecified;
+            }
+            set
+            {
+                this.endTimeFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string testType
+        {
+            get
+            {
+                return this.testTypeField;
+            }
+            set
+            {
+                this.testTypeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string outcome
+        {
+            get
+            {
+                return this.outcomeField;
+            }
+            set
+            {
+                this.outcomeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string testListId
+        {
+            get
+            {
+                return this.testListIdField;
+            }
+            set
+            {
+                this.testListIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string relativeResultsDirectory
+        {
+            get
+            {
+                return this.relativeResultsDirectoryField;
+            }
+            set
+            {
+                this.relativeResultsDirectoryField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string resultType
+        {
+            get
+            {
+                return this.resultTypeField;
+            }
+            set
+            {
+                this.resultTypeField = value;
+            }
+        }
+    }
+
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]

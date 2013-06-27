@@ -318,18 +318,28 @@ namespace MSTestResultViewer.Consol
                         {
                             if (testRes.testId.Equals(id))
                             {
-                                
-                               
                                 TestRunResultsUnitTestResultOutput output = new TestRunResultsUnitTestResultOutput();
                                 TestRunResultsUnitTestResultOutputErrorInfo error = new TestRunResultsUnitTestResultOutputErrorInfo();
-
-                                if (testRes.Output.ErrorInfo != null)
+                                if (testRes.outcome.Equals("Failed"))
                                 {
-                                    error.Message = testRes.Output.ErrorInfo.Message;
-                                    error.StackTrace = testRes.Output.ErrorInfo.StackTrace;
-                                    output.ErrorInfo = error;
+                                    if (testRes.Output.ErrorInfo != null)
+                                    {
+                                        error.Message = testRes.Output.ErrorInfo.Message;
+                                        error.StackTrace = testRes.Output.ErrorInfo.StackTrace;
+                                    }
+                                    else
+                                    {
+                                        error.Message = testRes.InnerResults.UnitTestResult.Output.ErrorInfo.Message;
+                                        error.StackTrace = testRes.InnerResults.UnitTestResult.Output.ErrorInfo.StackTrace;
+                                    }
                                 }
-                              
+                                else
+                                {
+                                    error.Message = "none";
+                                    error.StackTrace = "none";
+
+                                }
+                                output.ErrorInfo = error;
                                 output.TextMessages = testRes.Output.TextMessages;
 
                                 res = new TestRunResultsUnitTestResult()
@@ -395,7 +405,7 @@ namespace MSTestResultViewer.Consol
                 string category ="none";
                 if (unittest.TestCategory != null)
                 {
-                    category = unittest.TestCategory.TestCategoryItem.Value;
+                    category = unittest.TestCategory.TestCategoryItem.TestCategory;
                 }
                 string allMsgs = "";
                 List<string> msgs = new List<string>();
@@ -473,8 +483,9 @@ namespace MSTestResultViewer.Consol
                             tc.Ignored++;
                         }
 
-                        tc.Duration += TimeSpan.Parse(testRes.duration.ToString());
                         
+                        tc.Duration += new TimeSpan(0, testRes.duration.Hour, testRes.duration.Minute, testRes.duration.Second, testRes.duration.Millisecond);
+                                                                  
                         tc.Methods.Add(tcm);
                         projectFound.Classes.Add(tc);
                     }
@@ -620,14 +631,18 @@ namespace MSTestResultViewer.Consol
             if (result != null && result.outcome.ToUpper().Equals("FAILED"))
             {
                 _error = new ErrorInfo();
-                string[] delimiters = new string[] { ":line " };
+                string[] delimiters = new string[] { ":line" };
 
 
                
                 if (result.Output.ErrorInfo == null)
                 {
-                    _error.Message = result.InnerResults.UnitTestResult.Output.ErrorInfo.Message;
-                    _error.StackTrace = result.InnerResults.UnitTestResult.Output.ErrorInfo.StackTrace.ToString(CultureInfo.InvariantCulture);
+                    if (result.InnerResults != null)
+                    {
+                        _error.Message = result.InnerResults.UnitTestResult.Output.ErrorInfo.Message;
+                        _error.StackTrace = result.InnerResults.UnitTestResult.Output.ErrorInfo.StackTrace.ToString(CultureInfo.InvariantCulture);
+                    }
+                   
                
                 }
                 else
@@ -637,15 +652,12 @@ namespace MSTestResultViewer.Consol
 
                 }
 
-                
-
-
                 string strLineNo = "0";
                 try
                 {
                     strLineNo = _error.StackTrace.Split(delimiters, StringSplitOptions.RemoveEmptyEntries)[1];
                 }
-                catch (IndexOutOfRangeException e)
+                catch (Exception e)
                 {
                     Console.WriteLine("[WRANNING]: there is no stack line number in the TRX(see tag -stacktrace");
                 }
@@ -664,6 +676,7 @@ namespace MSTestResultViewer.Consol
                         if (Int32.TryParse(delimiters[0], out LineNo))
                         {
                             LineNo = Convert.ToInt32(delimiters[0]);
+                            //TODO: add the delimiters[1] - who throw this exception (e.g. at VisionmapAutomation.PreProcessorTests.PreprocessorTest() in c:\\Job\\workspace\\Run_Automation_By_Order_Test\\VisionmapAutomation\\PreProcessorTests.cs")
                         }
                     }
                 }
@@ -837,8 +850,15 @@ namespace MSTestResultViewer.Consol
                             percentPass = 0.0;
                             strPercent = "";
 
-                            
-                            methoChartDataValue +="'"+  TimeSpan.Parse(_method.Duration) +"'"+ ",";
+                            TimeSpan ts;
+                            //00:00:03.2563460 is working
+                            var parse =TimeSpan.TryParse(_method.Duration,out ts);
+                            if (parse == false)
+                            {
+                                Console.WriteLine("[Warnning]- failed to parse TimeSpan -line 851");
+                                //TODO: fix this issue.
+                            }
+                            methoChartDataValue += "'" + parse + "'" + ",";
                             methoChartDataText += "'" + _method.Name + "',";
 
                             switch (_method.Status)
